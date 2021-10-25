@@ -20,3 +20,4 @@ clean:
 .PHONY: test
 test:
 	protoc --lint_out=sort_imports:. $(PROTO_FILES)
+

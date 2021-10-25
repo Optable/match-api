@@ -7,7 +7,7 @@ Download Google's Protocol Buffers compiler `protoc` and make sure it's availabl
 [here](https://grpc.io/docs/protoc-installation/).
 
 ## Build
-To rebuild the go protobuf files
+To regenerate the go protobuf files, simply run
 ```bash
 make
 ```

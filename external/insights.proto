@@ -23,7 +23,6 @@ message Insights {
 
   // Number of connected components in the graph.
   int64 clusters = 2;
-
   int64 emails = 3;
   int64 visitor_ids = 4;
   int64 apple_idfas = 5;
@@ -49,10 +48,8 @@ message Insights {
 message TraitInsightKey {
   string name = 1;
   repeated TraitInsightValue values = 2;
-  int64 long_tail_count = 3;
-  float long_tail_coverage = 6;
-  int64 total_count = 4;
-  float coverage = 5;
+  int64 total_count = 3;
+  float coverage = 4;
 }
 
 message TraitInsightValue {
