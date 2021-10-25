@@ -1,0 +1,128 @@
+syntax = "proto3";
+package external;
+option go_package = "github.com/optable/protobuf/external";
+
+import "external/common.proto";
+import "google/protobuf/timestamp.proto";
+
+message DetailedInsights {
+  Insights identifiers = 1;
+  IdentifierCoverageInsights coverage = 2;
+  repeated TraitInsightKey traits = 3;
+}
+
+message InsightsHistory {
+  // Insights on a graph, after expansion
+
+  // Latest computed insights ordered by computation date descendant
+  repeated Insights trend = 1;
+}
+
+message Insights {
+  google.protobuf.Timestamp computed_at = 1;
+
+  // Number of connected components in the graph.
+  int64 clusters = 2;
+
+  int64 emails = 3;
+  int64 visitor_ids = 4;
+  int64 apple_idfas = 5;
+  int64 google_gaids = 6;
+  int64 custom_ids = 7;
+  int64 ipv4s = 8;
+  int64 ipv6s = 9;
+  int64 samsung_tifas = 10;
+  int64 roku_ridas = 11;
+  int64 amazon_afais = 12;
+  int64 phone_numbers = 13;
+  int64 custom_ids_1 = 14;
+  int64 custom_ids_2 = 15;
+  int64 custom_ids_3 = 16;
+  int64 custom_ids_4 = 17;
+  int64 custom_ids_5 = 18;
+  int64 custom_ids_6 = 19;
+  int64 custom_ids_7 = 20;
+  int64 custom_ids_8 = 21;
+  int64 custom_ids_9 = 22;
+}
+
+message TraitInsightKey {
+  string name = 1;
+  repeated TraitInsightValue values = 2;
+  int64 long_tail_count = 3;
+  float long_tail_coverage = 6;
+  int64 total_count = 4;
+  float coverage = 5;
+}
+
+message TraitInsightValue {
+  string name = 1;
+  int64 count = 2;
+  float coverage = 3;
+}
+
+message ListTraitInsightFactsReq {
+  TraitInsightFactFilters filters = 1;
+  int32 id = 2;
+  repeated SortField sorts = 3; // Sorts is an array to be consistent with the rest of the services even though there is currently only one type of sort for this request
+  string search = 4;
+}
+
+message ListUniverseTraitInsightFactsReq {
+  TraitInsightFactFilters filters = 1;
+  repeated SortField sorts = 2;
+  string search = 3;
+}
+
+message ListTraitInsightFactsRes {
+  repeated TraitInsightKey data = 1;
+}
+
+message TraitInsightFactFilters {
+  repeated string keys = 1;
+
+}
+
+// Contains number of clusters, and the ratio of clusters that contains at least
+// one of each of the identifier kinds
+message IdentifierCoverageInsights {
+  google.protobuf.Timestamp computed_at = 1;
+  int32 id = 2;
+
+  // Number of connected components in the graph.
+  int64 clusters = 3;
+
+  // The ratio is between 0 and 1, expressed as 0.5 for 50%
+  double clusters_having_emails_ratio = 4;
+  double clusters_having_visitor_ids_ratio = 5;
+  double clusters_having_apple_idfas_ratio = 6;
+  double clusters_having_google_gaids_ratio = 7;
+  double clusters_having_custom_ids_ratio = 8;
+  double clusters_having_ipv4s_ratio = 9;
+  double clusters_having_ipv6s_ratio = 10;
+  double clusters_having_samsung_tifas_ratio = 11;
+  double clusters_having_roku_ridas_ratio = 12;
+  double clusters_having_amazon_afais_ratio = 13;
+  double clusters_having_phone_numbers_ratio = 14;
+  double clusters_having_custom_ids_1_ratio = 15;
+  double clusters_having_custom_ids_2_ratio = 16;
+  double clusters_having_custom_ids_3_ratio = 17;
+  double clusters_having_custom_ids_4_ratio = 18;
+  double clusters_having_custom_ids_5_ratio = 19;
+  double clusters_having_custom_ids_6_ratio = 20;
+  double clusters_having_custom_ids_7_ratio = 21;
+  double clusters_having_custom_ids_8_ratio = 22;
+  double clusters_having_custom_ids_9_ratio = 23;
+}
+
+message GetIdentifierCoverageInsightFactsReq {
+  int32 id = 1;
+}
+
+message GetIdentifierCoverageInsightFactsRes {
+  IdentifierCoverageInsights insights = 1;
+}
+
+message GetUniverseInsightFactsRes {
+  Insights insights = 1;
+}

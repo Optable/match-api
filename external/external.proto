@@ -1,0 +1,138 @@
+syntax = "proto3";
+package external;
+option go_package = "github.com/optable/protobuf/external";
+
+import "external/identifier.proto";
+import "external/insights.proto";
+import "google/protobuf/timestamp.proto";
+
+message ExternalMatchRefreshOnce {
+  // Exact time at which the refresh will ocurr
+  google.protobuf.Timestamp at = 1;
+}
+
+message ExternalMatchRefreshDaily {
+  // Time at which the refresh will start occuring
+  google.protobuf.Timestamp start_at = 1;
+  // Time at which the refresh will stop occuring
+  google.protobuf.Timestamp end_at = 2;
+}
+
+message ExternalMatchRefreshAdhoc {
+}
+
+message ExternalInfo {
+  string organization = 1;
+  string icon_url = 2;
+  string url = 3;
+  // A mapping keyed by endpoint names to their actual urls
+  // It is useful, so that we won't be hardcoding the
+  // endpoints in the optable-cli, which means changing
+  // the routes, does not require the cli to be updated
+  map<string, string> endpoints = 4;
+}
+
+message CreateExternalMatchReq {
+  // identifier shared between the two parties for matching
+  string match_uuid = 1;
+  string name = 2;
+  string description = 3;
+
+  // Mostly for display concern,
+  // since spawning runs is always controlled by the sender
+  oneof refresh_frequency {
+    ExternalMatchRefreshOnce once = 4;
+    ExternalMatchRefreshDaily daily = 5;
+    ExternalMatchRefreshAdhoc adhoc = 6;
+  }
+
+  // Subset of IdKind to use for matching. If empty, all IDs elligible for matching will be used.
+  repeated IdKind identifiers_filter = 17;
+}
+
+message CreateExternalMatchRes {
+  // This is the same match_uuid as received in the request
+  string match_uuid = 1;
+}
+
+message ExternalMatch {
+  string match_uuid = 1;
+  string name = 2;
+  string description = 3;
+  repeated ExternalMatchResult results = 4;
+}
+
+message ListExternalMatchReq {}
+
+message ListExternalMatchRes {
+  repeated ExternalMatch matches = 1;
+}
+
+message GetExternalMatchResultsReq {
+  string match_uuid = 1;
+}
+
+message GetExternalMatchResultsRes {
+  repeated ExternalMatchResult results = 1;
+}
+
+message RunExternalMatchReq {
+  string match_uuid = 1;
+  string match_result_uuid = 2;
+  string client_certificate_pem = 3;
+}
+
+message RunExternalMatchRes {
+  string match_result_uuid = 1;
+  string endpoint = 2;
+  string server_certificate_pem = 3;
+  string error_msg = 4;
+}
+
+message GetExternalMatchResultReq {
+  string match_result_uuid = 1;
+}
+
+message GetExternalMatchResultRes {
+  ExternalMatchResult match_result = 1;
+}
+
+enum ExternalMatchResultState {
+  EXTERNAL_MATCH_RESULT_STATE_UNKNOWN = 0;
+  // The result is currently being computed
+  EXTERNAL_MATCH_RESULT_STATE_PENDING = 1;
+  // The result was properly computed and is no longer running
+  EXTERNAL_MATCH_RESULT_STATE_COMPLETED = 2;
+  // An error occurrend during the computation of that result
+  // See error_msg field for details related to that error
+  EXTERNAL_MATCH_RESULT_STATE_ERRORED = 3;
+}
+
+message ExternalMatchResult {
+  string uuid = 1;
+  ExternalMatchResultState state = 2;
+  string error_msg = 3;
+  Insights insights = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message PauseExternalMatchReq {
+  string match_uuid = 1;
+}
+
+message ResumeExternalMatchReq {
+  string match_uuid = 1;
+}
+
+message LockExternalMatchReq {
+  string match_uuid = 1;
+}
+
+message UnlockExternalMatchReq {
+  string match_uuid = 1;
+}
+
+message ArchiveExternalMatchReq {
+  string match_uuid = 1;
+}

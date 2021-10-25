@@ -1,0 +1,21 @@
+syntax = "proto3";
+package external;
+option go_package = "github.com/optable/protobuf/external";
+
+import "google/protobuf/timestamp.proto";
+
+message RegisterExternalPartnerReq {
+  string public_key = 1;
+  string token = 2;
+}
+
+message PartnersInitToken {
+  string slug = 1;
+  // URL to and external/api/info endpoint
+  string sandbox_info = 2;
+  string secret = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp expires_at = 5;
+  // email address where to send the token to
+  string send_to_email = 6;
+}
