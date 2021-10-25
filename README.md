@@ -1,5 +1,5 @@
-# protobuf
-Protocol buffer definitions to interact with Optable Data connectivity platform.
+# API
+This repository contains the interface definitions (protobufs) of public Optable APIs for interacting with Optable Data connectivity platform to perform PSI. 
 
 ## Installation
 Download Google's Protocol Buffers compiler `protoc` and make sure it's available in your PATH. You can download it
