@@ -1,4 +1,4 @@
-module github.com/optable/protobuf
+module github.com/optable/api
 
 go 1.16
 

@@ -1,10 +1,10 @@
 syntax = "proto3";
-package external;
-option go_package = "github.com/optable/protobuf/external";
+package match.v1;
+option go_package = "github.com/optable/api/match/v1";
 
 import "google/protobuf/timestamp.proto";
 
-message RegisterExternalPartnerReq {
+message RegisterPartnerReq {
   string public_key = 1;
   string token = 2;
 }

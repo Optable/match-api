@@ -1,6 +1,6 @@
 syntax = "proto3";
-package external;
-option go_package = "github.com/optable/protobuf/external";
+package match.v1;
+option go_package = "github.com/optable/api/match/v1";
 
 message SortField {
   string key = 1;

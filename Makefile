@@ -1,11 +1,11 @@
 # Protobuf files management
 
-PROTO_EXTERNAL_FILES := $(wildcard external/*.proto)
-PROTO_FILES := $(PROTO_EXTERNAL_FILES)
+PROTO_MATCH_FILES := $(wildcard match/v1/*.proto)
+PROTO_FILES := $(PROTO_MATCH_FILES)
 
 # Protobuf files and their generated equivalents
-GO_EXTERNAL_PB_FILES :=$(patsubst external/%.proto,external/%.pb.go,$(PROTO_EXTERNAL_FILES))
-GO_PB_FILES := $(GO_EXTERNAL_PB_FILES)
+GO_MATCH_PB_FILES :=$(patsubst match/v1/%.proto,match/v1/%.pb.go,$(PROTO_MATCH_FILES))
+GO_PB_FILES := $(GO_MATCH_PB_FILES)
 
 .PHONY: build
 build: clean

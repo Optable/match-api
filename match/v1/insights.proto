@@ -1,9 +1,10 @@
 syntax = "proto3";
-package external;
-option go_package = "github.com/optable/protobuf/external";
+package match.v1;
+option go_package = "github.com/optable/api/match/v1";
 
-import "external/common.proto";
 import "google/protobuf/timestamp.proto";
+import "match/v1/common.proto";
+
 
 message DetailedInsights {
   Insights identifiers = 1;
@@ -24,25 +25,14 @@ message Insights {
   // Number of connected components in the graph.
   int64 clusters = 2;
   int64 emails = 3;
-  int64 visitor_ids = 4;
-  int64 apple_idfas = 5;
-  int64 google_gaids = 6;
-  int64 custom_ids = 7;
-  int64 ipv4s = 8;
-  int64 ipv6s = 9;
-  int64 samsung_tifas = 10;
-  int64 roku_ridas = 11;
-  int64 amazon_afais = 12;
-  int64 phone_numbers = 13;
-  int64 custom_ids_1 = 14;
-  int64 custom_ids_2 = 15;
-  int64 custom_ids_3 = 16;
-  int64 custom_ids_4 = 17;
-  int64 custom_ids_5 = 18;
-  int64 custom_ids_6 = 19;
-  int64 custom_ids_7 = 20;
-  int64 custom_ids_8 = 21;
-  int64 custom_ids_9 = 22;
+  int64 apple_idfas = 4;
+  int64 google_gaids = 5;
+  int64 ipv4s = 6;
+  int64 ipv6s = 7;
+  int64 samsung_tifas = 8;
+  int64 roku_ridas = 9;
+  int64 amazon_afais = 10;
+  int64 phone_numbers = 11;
 }
 
 message TraitInsightKey {
@@ -91,25 +81,14 @@ message IdentifierCoverageInsights {
 
   // The ratio is between 0 and 1, expressed as 0.5 for 50%
   double clusters_having_emails_ratio = 4;
-  double clusters_having_visitor_ids_ratio = 5;
-  double clusters_having_apple_idfas_ratio = 6;
-  double clusters_having_google_gaids_ratio = 7;
-  double clusters_having_custom_ids_ratio = 8;
-  double clusters_having_ipv4s_ratio = 9;
-  double clusters_having_ipv6s_ratio = 10;
-  double clusters_having_samsung_tifas_ratio = 11;
-  double clusters_having_roku_ridas_ratio = 12;
-  double clusters_having_amazon_afais_ratio = 13;
-  double clusters_having_phone_numbers_ratio = 14;
-  double clusters_having_custom_ids_1_ratio = 15;
-  double clusters_having_custom_ids_2_ratio = 16;
-  double clusters_having_custom_ids_3_ratio = 17;
-  double clusters_having_custom_ids_4_ratio = 18;
-  double clusters_having_custom_ids_5_ratio = 19;
-  double clusters_having_custom_ids_6_ratio = 20;
-  double clusters_having_custom_ids_7_ratio = 21;
-  double clusters_having_custom_ids_8_ratio = 22;
-  double clusters_having_custom_ids_9_ratio = 23;
+  double clusters_having_apple_idfas_ratio = 5;
+  double clusters_having_google_gaids_ratio = 6;
+  double clusters_having_ipv4s_ratio = 7;
+  double clusters_having_ipv6s_ratio = 8;
+  double clusters_having_samsung_tifas_ratio = 9;
+  double clusters_having_roku_ridas_ratio = 10;
+  double clusters_having_amazon_afais_ratio = 11;
+  double clusters_having_phone_numbers_ratio = 12;
 }
 
 message GetIdentifierCoverageInsightFactsReq {
