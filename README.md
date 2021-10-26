@@ -1,5 +1,5 @@
-# API
-This repository contains the interface definitions (protobufs) of public Optable APIs for interacting with Optable Data connectivity platform to perform PSI. 
+# Match-API
+This repository contains the interface definitions (protobufs) of public Optable match APIs for performing secure Private Set Intersection (PSI) matches with Optable Data connectivity platforms (DCN).
 
 ## Installation
 Download Google's Protocol Buffers compiler `protoc` and make sure it's available in your PATH. You can download it
