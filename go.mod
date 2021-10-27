@@ -1,4 +1,4 @@
-module github.com/optable/api
+module github.com/optable/match-api
 
 go 1.16
 
