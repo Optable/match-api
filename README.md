@@ -1,5 +1,5 @@
-# Match-API
-This repository contains the interface definitions (protobufs) of public Optable match APIs for performing secure Private Set Intersection (PSI) matches with Optable Data connectivity platforms (DCN).
+# match-api
+A set of public facing APIs defined by protobuf messages to perform secure Private Set Intersection (PSI) matches with Optable Data connectivity nodes (DCN). The open sourced Command Line Interface (CLI) utility [match-cli](https://github.com/Optable/match-cli) uses these APIs to enable any users of the tool to perform secure ID matches with a DCN partner.
 
 ## Installation
 Download Google's Protocol Buffers compiler `protoc` and make sure it's available in your PATH. You can download it
@@ -7,7 +7,7 @@ Download Google's Protocol Buffers compiler `protoc` and make sure it's availabl
 [here](https://grpc.io/docs/protoc-installation/).
 
 ## Build
-To regenerate the go protobuf files, simply run
+To compile and regenerate the go output files, simply run
 ```bash
 make
 ```
