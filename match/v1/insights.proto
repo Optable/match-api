@@ -6,16 +6,13 @@ import "google/protobuf/timestamp.proto";
 
 message Insights {
   google.protobuf.Timestamp computed_at = 1;
-
-  // Number of connected components in the graph.
-  int64 clusters = 2;
-  int64 emails = 3;
-  int64 apple_idfas = 4;
-  int64 google_gaids = 5;
-  int64 ipv4s = 6;
-  int64 ipv6s = 7;
-  int64 samsung_tifas = 8;
-  int64 roku_ridas = 9;
-  int64 amazon_afais = 10;
-  int64 phone_numbers = 11;
+  int64 emails = 2;
+  int64 apple_idfas = 3;
+  int64 google_gaids = 4;
+  int64 ipv4s = 5;
+  int64 ipv6s = 6;
+  int64 samsung_tifas = 7;
+  int64 roku_ridas = 8;
+  int64 amazon_afais = 9;
+  int64 phone_numbers = 10;
 }
