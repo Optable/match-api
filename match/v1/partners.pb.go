@@ -165,6 +165,119 @@ func (x *PartnersInitToken) GetSendToEmail() string {
 	return ""
 }
 
+type CreatePartnersInitTokenReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Adhoc partner's name
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Token's time to live in hours
+	Expiry int32 `protobuf:"varint,2,opt,name=expiry,proto3" json:"expiry,omitempty"`
+	// email to send the token to
+	Email string `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+}
+
+func (x *CreatePartnersInitTokenReq) Reset() {
+	*x = CreatePartnersInitTokenReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_match_v1_partners_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CreatePartnersInitTokenReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreatePartnersInitTokenReq) ProtoMessage() {}
+
+func (x *CreatePartnersInitTokenReq) ProtoReflect() protoreflect.Message {
+	mi := &file_match_v1_partners_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreatePartnersInitTokenReq.ProtoReflect.Descriptor instead.
+func (*CreatePartnersInitTokenReq) Descriptor() ([]byte, []int) {
+	return file_match_v1_partners_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CreatePartnersInitTokenReq) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CreatePartnersInitTokenReq) GetExpiry() int32 {
+	if x != nil {
+		return x.Expiry
+	}
+	return 0
+}
+
+func (x *CreatePartnersInitTokenReq) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+type CreatePartnersInitTokenRes struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Token *PartnersInitToken `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+}
+
+func (x *CreatePartnersInitTokenRes) Reset() {
+	*x = CreatePartnersInitTokenRes{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_match_v1_partners_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CreatePartnersInitTokenRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreatePartnersInitTokenRes) ProtoMessage() {}
+
+func (x *CreatePartnersInitTokenRes) ProtoReflect() protoreflect.Message {
+	mi := &file_match_v1_partners_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreatePartnersInitTokenRes.ProtoReflect.Descriptor instead.
+func (*CreatePartnersInitTokenRes) Descriptor() ([]byte, []int) {
+	return file_match_v1_partners_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *CreatePartnersInitTokenRes) GetToken() *PartnersInitToken {
+	if x != nil {
+		return x.Token
+	}
+	return nil
+}
+
 var File_match_v1_partners_proto protoreflect.FileDescriptor
 
 var file_match_v1_partners_proto_rawDesc = []byte{
@@ -192,10 +305,21 @@ var file_match_v1_partners_proto_rawDesc = []byte{
 	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52,
 	0x09, 0x65, 0x78, 0x70, 0x69, 0x72, 0x65, 0x73, 0x41, 0x74, 0x12, 0x22, 0x0a, 0x0d, 0x73, 0x65,
 	0x6e, 0x64, 0x5f, 0x74, 0x6f, 0x5f, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x18, 0x06, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0b, 0x73, 0x65, 0x6e, 0x64, 0x54, 0x6f, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x42, 0x21,
-	0x5a, 0x1f, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x6f, 0x70, 0x74,
-	0x61, 0x62, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x2f, 0x76,
-	0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x09, 0x52, 0x0b, 0x73, 0x65, 0x6e, 0x64, 0x54, 0x6f, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x22, 0x5e,
+	0x0a, 0x1a, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x74, 0x6e, 0x65, 0x72, 0x73,
+	0x49, 0x6e, 0x69, 0x74, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x12, 0x12, 0x0a, 0x04,
+	0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65,
+	0x12, 0x16, 0x0a, 0x06, 0x65, 0x78, 0x70, 0x69, 0x72, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x06, 0x65, 0x78, 0x70, 0x69, 0x72, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69,
+	0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x22, 0x4f,
+	0x0a, 0x1a, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x74, 0x6e, 0x65, 0x72, 0x73,
+	0x49, 0x6e, 0x69, 0x74, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x73, 0x12, 0x31, 0x0a, 0x05,
+	0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x6d, 0x61,
+	0x74, 0x63, 0x68, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x72, 0x74, 0x6e, 0x65, 0x72, 0x73, 0x49,
+	0x6e, 0x69, 0x74, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x42,
+	0x21, 0x5a, 0x1f, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x6f, 0x70,
+	0x74, 0x61, 0x62, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x2f,
+	0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -210,20 +334,23 @@ func file_match_v1_partners_proto_rawDescGZIP() []byte {
 	return file_match_v1_partners_proto_rawDescData
 }
 
-var file_match_v1_partners_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_match_v1_partners_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_match_v1_partners_proto_goTypes = []interface{}{
-	(*RegisterPartnerReq)(nil),    // 0: match.v1.RegisterPartnerReq
-	(*PartnersInitToken)(nil),     // 1: match.v1.PartnersInitToken
-	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
+	(*RegisterPartnerReq)(nil),         // 0: match.v1.RegisterPartnerReq
+	(*PartnersInitToken)(nil),          // 1: match.v1.PartnersInitToken
+	(*CreatePartnersInitTokenReq)(nil), // 2: match.v1.CreatePartnersInitTokenReq
+	(*CreatePartnersInitTokenRes)(nil), // 3: match.v1.CreatePartnersInitTokenRes
+	(*timestamppb.Timestamp)(nil),      // 4: google.protobuf.Timestamp
 }
 var file_match_v1_partners_proto_depIdxs = []int32{
-	2, // 0: match.v1.PartnersInitToken.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: match.v1.PartnersInitToken.expires_at:type_name -> google.protobuf.Timestamp
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	4, // 0: match.v1.PartnersInitToken.created_at:type_name -> google.protobuf.Timestamp
+	4, // 1: match.v1.PartnersInitToken.expires_at:type_name -> google.protobuf.Timestamp
+	1, // 2: match.v1.CreatePartnersInitTokenRes.token:type_name -> match.v1.PartnersInitToken
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_match_v1_partners_proto_init() }
@@ -256,6 +383,30 @@ func file_match_v1_partners_proto_init() {
 				return nil
 			}
 		}
+		file_match_v1_partners_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CreatePartnersInitTokenReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_match_v1_partners_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CreatePartnersInitTokenRes); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -263,7 +414,7 @@ func file_match_v1_partners_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_match_v1_partners_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
