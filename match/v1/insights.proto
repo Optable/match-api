@@ -15,4 +15,5 @@ message Insights {
   int64 roku_ridas = 8;
   int64 amazon_afais = 9;
   int64 phone_numbers = 10;
+  int32 differential_privacy_threshold = 11;
 }
