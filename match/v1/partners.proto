@@ -9,8 +9,7 @@ message RegisterPartnerReq {
   string token = 2;
 }
 
-message PartnersInitToken {
-  string slug = 1;
+message PartnerInitToken {
   // URL to and external/api/info endpoint
   string sandbox_info = 2;
   string secret = 3;
@@ -18,9 +17,12 @@ message PartnersInitToken {
   google.protobuf.Timestamp expires_at = 5;
   // email address where to send the token to
   string send_to_email = 6;
+  int32 id = 7;
+  google.protobuf.Timestamp updated_at = 8;
+  int32 partner_id = 9;
 }
 
-message CreatePartnersInitTokenReq {
+message CreatePartnerInitTokenReq {
   // Adhoc partner's name
   string name = 1;
   // Token's time to live in hours
@@ -29,7 +31,7 @@ message CreatePartnersInitTokenReq {
   string email = 3;
 }
 
-message CreatePartnersInitTokenRes {
-  PartnersInitToken token = 1;
+message CreatePartnerInitTokenRes {
+  PartnerInitToken token = 1;
 }
 
