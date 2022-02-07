@@ -10,6 +10,7 @@ message RegisterPartnerReq {
 }
 
 message PartnerInitToken {
+  string slug = 1;
   // URL to and external/api/info endpoint
   string sandbox_info = 2;
   string secret = 3;
