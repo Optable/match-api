@@ -7,6 +7,8 @@ import "google/protobuf/timestamp.proto";
 message RegisterPartnerReq {
   string public_key = 1;
   string token = 2;
+  string auth_hostname = 3;
+  string info_url = 4;
 }
 
 message PartnerInitToken {
@@ -22,17 +24,3 @@ message PartnerInitToken {
   google.protobuf.Timestamp updated_at = 8;
   int32 partner_id = 9;
 }
-
-message CreatePartnerInitTokenReq {
-  // Adhoc partner's name
-  string name = 1;
-  // Token's time to live in hours
-  int32 expiry = 2;
-  // email to send the token to
-  string email = 3;
-}
-
-message CreatePartnerInitTokenRes {
-  PartnerInitToken token = 1;
-}
-
