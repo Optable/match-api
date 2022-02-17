@@ -2,8 +2,6 @@ syntax = "proto3";
 package match.v1;
 option go_package = "github.com/optable/api/match/v1";
 
-import "google/protobuf/timestamp.proto";
-
 message RegisterPartnerReq {
   string public_key = 1;
   string token = 2;
@@ -16,11 +14,4 @@ message PartnerInitToken {
   // URL to and external/api/info endpoint
   string sandbox_info = 2;
   string secret = 3;
-  google.protobuf.Timestamp created_at = 4;
-  google.protobuf.Timestamp expires_at = 5;
-  // email address where to send the token to
-  string send_to_email = 6;
-  int32 id = 7;
-  google.protobuf.Timestamp updated_at = 8;
-  int32 partner_id = 9;
 }
