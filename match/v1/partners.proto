@@ -10,6 +10,8 @@ message RegisterPartnerReq {
 }
 
 message PartnerInitToken {
+  // The unique identifier used in the JWT token auth.
+  string slug = 1;
   // Url to the API the we can register to.
   string sandbox_info = 2;
   // Secret token used to identify the partner invitation.
