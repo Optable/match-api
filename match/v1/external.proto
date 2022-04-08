@@ -22,17 +22,6 @@ message ExternalMatchRefreshDaily {
 message ExternalMatchRefreshAdhoc {
 }
 
-message ExternalInfo {
-  string organization = 1;
-  string icon_url = 2;
-  string url = 3;
-  // A mapping keyed by endpoint names to their actual urls
-  // It is useful, so that we won't be hardcoding the
-  // endpoints in the optable-cli, which means changing
-  // the routes, does not require the cli to be updated
-  map<string, string> endpoints = 4;
-}
-
 message CreateExternalMatchReq {
   // identifier shared between the two parties for matching
   string match_uid = 1;
