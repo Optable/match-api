@@ -25,4 +25,6 @@ enum IdKind {
   ID_KIND_AMAZON_AFAI = 8;
   // IdKind_ID_KIND_PHONE_NUMBER, Phone number.
   ID_KIND_PHONE_NUMBER = 9;
+  // IdKind_ID_KIND_NETID_TPID, NetID.
+  ID_KIND_NETID_TPID = 10;
 }
