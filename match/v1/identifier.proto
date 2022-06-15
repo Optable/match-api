@@ -27,4 +27,6 @@ enum IdKind {
   ID_KIND_PHONE_NUMBER = 9;
   // IdKind_ID_KIND_NETID_TPID, NetID.
   ID_KIND_NETID_TPID = 10;
+  // ID_KIND_ANY, this signifies that we will use all available identifiers
+  ID_KIND_ANY = 11;
 }
