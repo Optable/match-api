@@ -242,9 +242,9 @@ type CreateExternalMatchReq struct {
 	//	*CreateExternalMatchReq_Daily
 	//	*CreateExternalMatchReq_Adhoc
 	RefreshFrequency isCreateExternalMatchReq_RefreshFrequency `protobuf_oneof:"refresh_frequency"`
-	// Subset of IdKind to use for matching. If empty, none of the eligible IDs will be used..
+	// Subset of IdKind to use for matching. If empty, none of the eligible IDs will be used.
 	IdentifiersFilter []IdKind `protobuf:"varint,17,rep,packed,name=identifiers_filter,json=identifiersFilter,proto3,enum=match.v1.IdKind" json:"identifiers_filter,omitempty"`
-	// set this to true to use any eligible/matchable IDs, in which case the identifier_filter field will be ignored.
+	// select any eligible/matchable IDs for matching, in which case the identifier_filter field will be ignored.
 	SelectAny bool `protobuf:"varint,18,opt,name=selectAny,proto3" json:"selectAny,omitempty"`
 }
 
