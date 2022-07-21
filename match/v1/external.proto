@@ -70,6 +70,7 @@ message RunExternalMatchReq {
   string match_uid = 1;
   string match_result_uid = 2;
   string client_certificate_pem = 3;
+  bool use_cleanroom = 4;
 }
 
 message RunExternalMatchRes {
@@ -77,6 +78,7 @@ message RunExternalMatchRes {
   string endpoint = 2;
   string server_certificate_pem = 3;
   string error_msg = 4;
+  string cleanroom_id = 5;
 }
 
 message GetExternalMatchResultReq {
