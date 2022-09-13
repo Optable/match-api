@@ -238,6 +238,7 @@ type CreateExternalMatchReq struct {
 	// since spawning runs is always controlled by the sender
 	//
 	// Types that are assignable to RefreshFrequency:
+	//
 	//	*CreateExternalMatchReq_Once
 	//	*CreateExternalMatchReq_Daily
 	//	*CreateExternalMatchReq_Adhoc
