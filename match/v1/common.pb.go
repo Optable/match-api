@@ -282,6 +282,7 @@ type Error struct {
 	Code    Status `protobuf:"varint,1,opt,name=code,proto3,enum=match.v1.Status" json:"code,omitempty"`
 	Message string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
 	// Types that are assignable to Details:
+	//
 	//	*Error_Unprocessable
 	Details isError_Details `protobuf_oneof:"details"`
 }
