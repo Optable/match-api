@@ -8,14 +8,14 @@ import "match/v1/insights.proto";
 
 
 message ExternalMatchRefreshOnce {
-  // Exact time at which the refresh will ocurr
+  // Exact time at which the refresh will occur
   google.protobuf.Timestamp at = 1;
 }
 
 message ExternalMatchRefreshDaily {
-  // Time at which the refresh will start occuring
+  // Time at which the refresh will start occurring
   google.protobuf.Timestamp start_at = 1;
-  // Time at which the refresh will stop occuring
+  // Time at which the refresh will stop occurring
   google.protobuf.Timestamp end_at = 2;
 }
 
@@ -36,8 +36,11 @@ message CreateExternalMatchReq {
     ExternalMatchRefreshAdhoc adhoc = 6;
   }
 
-  // Subset of IdKind to use for matching. If empty, all IDs elligible for matching will be used.
+  // Subset of IdKind to use for matching. If empty, all IDs eligible for matching will be used.
   repeated IdKind identifiers_filter = 17;
+
+  // A list of traits to transfer with this match
+  repeated string transferred_traits = 18;
 }
 
 message CreateExternalMatchRes {
@@ -50,6 +53,15 @@ message ExternalMatch {
   string name = 2;
   string description = 3;
   repeated ExternalMatchResult results = 4;
+
+  // Output only. A list of traits to transfer with this match. This is only populated for the
+  // receiver of the match.
+  repeated string transferred_traits = 5;
+
+  // Optional. All traits keys (specified by the key of the map) will
+  // be transferred to the recipient. The value is the renamed traits
+  // This is only populated for the sender of the match
+  map<string, string> trait_transfer_rename_map = 6;
 }
 
 message ListExternalMatchReq {}
@@ -95,7 +107,7 @@ enum ExternalMatchResultState {
   EXTERNAL_MATCH_RESULT_STATE_PENDING = 1;
   // The result was properly computed and is no longer running
   EXTERNAL_MATCH_RESULT_STATE_COMPLETED = 2;
-  // An error occurrend during the computation of that result
+  // An error occurred during the computation of that result
   // See error_msg field for details related to that error
   EXTERNAL_MATCH_RESULT_STATE_ERRORED = 3;
 }
