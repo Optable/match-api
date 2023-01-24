@@ -41,6 +41,21 @@ message CreateExternalMatchReq {
 
   // A list of traits to transfer with this match
   repeated string transferred_traits = 18;
+
+  // The match type of this requested match
+  MatchType match_type = 19;
+}
+
+// The possible types for a match.
+enum MatchType {
+  // Unknown type.
+  MATCH_TYPE_UNKNOWN = 0;
+  // The match is a regular match.
+  MATCH_TYPE_IDENTIFIER = 1;
+  // The match has trait transfer.
+  MATCH_TYPE_IDENTIFIER_WITH_TRAITS = 2;
+  // The match is a lookalike.
+  MATCH_TYPE_LOOKALIKE = 3;
 }
 
 message CreateExternalMatchRes {
