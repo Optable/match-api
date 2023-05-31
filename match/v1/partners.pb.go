@@ -33,7 +33,7 @@ type SnowflakePartner struct {
 	AccountLocatorId string `protobuf:"bytes,3,opt,name=account_locator_id,json=accountLocatorId,proto3" json:"account_locator_id,omitempty"`
 	// Required. Organization Name (display name of the tenant)
 	OrganizationName string `protobuf:"bytes,4,opt,name=organization_name,json=organizationName,proto3" json:"organization_name,omitempty"`
-	// Required. Node_id (display name of the tenant)
+	// Required. Node_id (unique identifier of the tenant)
 	NodeId string `protobuf:"bytes,5,opt,name=node_id,json=nodeId,proto3" json:"node_id,omitempty"`
 }
 
@@ -163,7 +163,7 @@ type HeadlessPartner struct {
 	Token string `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
 	// Required. Organization Name (display name of the tenant)
 	OrganizationName string `protobuf:"bytes,3,opt,name=organization_name,json=organizationName,proto3" json:"organization_name,omitempty"`
-	// Required. Node_id (display name of the tenant)
+	// Required. Node_id (unique identifier of the tenant)
 	NodeId string `protobuf:"bytes,4,opt,name=node_id,json=nodeId,proto3" json:"node_id,omitempty"`
 }
 

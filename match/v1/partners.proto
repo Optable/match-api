@@ -11,7 +11,7 @@ message SnowflakePartner {
   string account_locator_id = 3;
   // Required. Organization Name (display name of the tenant)
   string organization_name = 4;
-  // Required. Node_id (display name of the tenant)
+  // Required. Node_id (unique identifier of the tenant)
   string node_id = 5;
 }
 
@@ -27,7 +27,7 @@ message HeadlessPartner {
   string token = 2;
   // Required. Organization Name (display name of the tenant)
   string organization_name = 3;
-  // Required. Node_id (display name of the tenant)
+  // Required. Node_id (unique identifier of the tenant)
   string node_id = 4;
 }
 
