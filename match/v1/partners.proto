@@ -9,15 +9,19 @@ message SnowflakePartner {
   string region = 2;
   // Required. The account locator ID of the snowflake partner
   string account_locator_id = 3;
-  // Required. Organization Name (display name of the tenant)
+  // Required. Organization Name (display name)
   string organization_name = 4;
-  // Required. Node_id (unique identifier of the tenant)
+  // Required. Nod ID (unique identifier)
   string node_id = 5;
 }
 
 message DCNPartner {
   // Required. Token used to authenticate the external partner.
   string token = 1;
+  // Required. Organization Name (display name)
+  string organization_name = 4;
+  // Required. Nod ID (unique identifier)
+  string node_id = 5;
 }
 
 message HeadlessPartner {
@@ -25,9 +29,9 @@ message HeadlessPartner {
   string public_key = 1;
   // Required. Token used to authenticate the external partner.
   string token = 2;
-  // Required. Organization Name (display name of the tenant)
+  // Required. Organization Name (display name)
   string organization_name = 3;
-  // Required. Node_id (unique identifier of the tenant)
+  // Required. Node ID (unique identifier)
   string node_id = 4;
 }
 
