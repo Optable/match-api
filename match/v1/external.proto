@@ -54,6 +54,9 @@ message ExternalMatch {
   string description = 3;
   repeated ExternalMatchResult results = 4;
 
+  google.protobuf.Timestamp created_at = 7;
+  ExternalMatchState state = 8;
+
   // Output only. A list of traits to transfer with this match. This is only populated for the
   // receiver of the match.
   repeated string transferred_traits = 5;
@@ -68,6 +71,14 @@ message ListExternalMatchReq {}
 
 message ListExternalMatchRes {
   repeated ExternalMatch matches = 1;
+}
+
+message GetExternalMatchReq{
+  string match_uid = 1;
+}
+
+message GetExternalMatchRes {
+  ExternalMatch match = 1;
 }
 
 message GetExternalMatchResultsReq {
@@ -119,6 +130,17 @@ message ExternalMatchResult {
   Insights insights = 4;
   google.protobuf.Timestamp created_at = 5;
   google.protobuf.Timestamp updated_at = 6;
+}
+
+enum ExternalMatchState {
+  // Unspecified state.
+  EXTERNAL_MATCH_STATE_UNKNOWN = 0;
+  // The match is done.
+  EXTERNAL_MATCH_STATE_DONE = 1;
+  // The match is active, default state
+  EXTERNAL_MATCH_STATE_ACTIVE = 2;
+  // The match is errored.
+  EXTERNAL_MATCH_STATE_ERRORED = 3;
 }
 
 message PauseExternalMatchReq {
