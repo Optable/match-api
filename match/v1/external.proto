@@ -139,8 +139,10 @@ enum ExternalMatchState {
   EXTERNAL_MATCH_STATE_DONE = 1;
   // The match is active, default state
   EXTERNAL_MATCH_STATE_ACTIVE = 2;
+  // The match state is archived.
+  EXTERNAL_MATCH_STATE_ARCHIVED = 3;
   // The match is errored.
-  EXTERNAL_MATCH_STATE_ERRORED = 3;
+  EXTERNAL_MATCH_STATE_ERRORED = 4;
 }
 
 message PauseExternalMatchReq {
