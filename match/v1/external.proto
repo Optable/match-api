@@ -62,12 +62,23 @@ message ExternalMatch {
   // be transferred to the recipient. The value is the renamed traits
   // This is only populated for the sender of the match
   map<string, string> trait_transfer_rename_map = 6;
+
+  google.protobuf.Timestamp created_at = 7;
+  ExternalMatchState state = 8;
 }
 
 message ListExternalMatchReq {}
 
 message ListExternalMatchRes {
   repeated ExternalMatch matches = 1;
+}
+
+message GetExternalMatchReq{
+  string match_uid = 1;
+}
+
+message GetExternalMatchRes {
+  ExternalMatch match = 1;
 }
 
 message GetExternalMatchResultsReq {
@@ -119,6 +130,19 @@ message ExternalMatchResult {
   Insights insights = 4;
   google.protobuf.Timestamp created_at = 5;
   google.protobuf.Timestamp updated_at = 6;
+}
+
+enum ExternalMatchState {
+  // Unspecified state.
+  EXTERNAL_MATCH_STATE_UNKNOWN = 0;
+  // The match is done.
+  EXTERNAL_MATCH_STATE_DONE = 1;
+  // The match is active, default state
+  EXTERNAL_MATCH_STATE_ACTIVE = 2;
+  // The match state is archived.
+  EXTERNAL_MATCH_STATE_ARCHIVED = 3;
+  // The match is errored.
+  EXTERNAL_MATCH_STATE_ERRORED = 4;
 }
 
 message PauseExternalMatchReq {
