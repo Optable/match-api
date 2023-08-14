@@ -23,6 +23,15 @@ message HeadlessPartner {
   string token = 2;
 }
 
+message AwsPartner {
+  // Required. Token used to authenticate the external partner.
+  string token = 1;
+  // Required. The region of the partner's AWS account
+  string region = 2;
+  // Required. The account ID of the AWS partner
+  string account_id = 3;
+}
+
 message RegisterPartnerReq {
   // Public key that will be used to authenticate this partner.
   string public_key = 1;
@@ -33,6 +42,7 @@ message RegisterPartnerReq {
     DCNPartner dcn_partner = 3;
     HeadlessPartner headless_partner = 4;
     SnowflakePartner snowflake_partner = 5;
+    AwsPartner aws_partner = 6;
   }
 }
 
