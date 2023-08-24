@@ -73,8 +73,8 @@ message CreateExternalMatchRes {
   // This is the same match_uid as received in the request
   string match_uid = 1;
 
-  // The relevant information to create an external match in an external system.
-  map<string, string> creation_information = 2;
+  // optional annotation about the match.
+  map<string, string> annotation = 2;
 }
 
 message ExternalMatch {
