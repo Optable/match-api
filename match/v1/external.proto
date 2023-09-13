@@ -41,11 +41,40 @@ message CreateExternalMatchReq {
 
   // A list of traits to transfer with this match
   repeated string transferred_traits = 18;
+
+  // Specify the audience data used for matches conducted in external systems
+  Audience audience = 19;
+
+  message Audience {
+    oneof audience {
+      // The audience is stored in a Snowflake database
+      Snowflake snowflake = 2;
+      // The audience is stored in an AWS s3 bucket
+      Aws aws = 3;
+    }
+
+    message Snowflake {
+      // The Snowflake database name where the audience is stored
+      string database = 1;
+      // The Snowflake schema name where the audience is stored
+      string schema = 2;
+      // The Snowflake table name where the audience is stored
+      string table = 3;
+    }
+
+    message Aws {
+      // The AWS s3 URL where the audience is stored
+      string s3_url = 1;
+    }
+  }
 }
 
 message CreateExternalMatchRes {
   // This is the same match_uid as received in the request
   string match_uid = 1;
+
+  // optional annotation about the match.
+  map<string, string> annotation = 2;
 }
 
 message ExternalMatch {
