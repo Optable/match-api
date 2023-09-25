@@ -27,4 +27,6 @@ enum IdKind {
   ID_KIND_PHONE_NUMBER = 9;
   // IdKind_ID_KIND_NETID, NetID is a unique TPID.
   ID_KIND_NETID = 10;
+  // IdKind_ID_KIND_POSTAL_CODE, Postal code.
+  ID_KIND_POSTAL_CODE = 11;
 }
