@@ -16,5 +16,6 @@ message Insights {
   int64 amazon_afais = 9;
   int64 phone_numbers = 10;
   int64 netids = 12;
+  int64 postal_codes = 13;
   int32 differential_privacy_threshold = 11;
 }
