@@ -17,5 +17,6 @@ message Insights {
   int64 phone_numbers = 10;
   int64 netids = 12;
   int64 postal_codes = 13;
+  int64 id5s = 14;
   int32 differential_privacy_threshold = 11;
 }
