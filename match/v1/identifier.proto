@@ -31,4 +31,6 @@ enum IdKind {
   ID_KIND_POSTAL_CODE = 11;
   // IdKind_ID_KIND_ID5, Decrypted ID5.
   ID_KIND_ID5 = 12;
+  // IdKind_ID_KIND_UTIQ, UTIQ.
+  ID_KIND_UTIQ = 13;
 }
