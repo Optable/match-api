@@ -5,8 +5,7 @@ PROTO_FILES := $(PROTO_MATCH_FILES)
 
 # Protobuf files and their generated equivalents
 GO_MATCH_PB_FILES :=$(patsubst match/v1/%.proto,match/v1/%.pb.go,$(PROTO_MATCH_FILES))
-GO_CLEANROOM_PB_FILES := $(wildcard gen/optable/cleanroom/v1/*.pb.go)
-GO_PB_FILES := $(GO_MATCH_PB_FILES) $(GO_CLEANROOM_PB_FILES)
+GO_PB_FILES := $(GO_MATCH_PB_FILES)
 
 .PHONY: build
 build: clean
