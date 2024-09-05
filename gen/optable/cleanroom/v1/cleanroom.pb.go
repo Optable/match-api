@@ -370,140 +370,6 @@ func (x *Cleanroom) GetResult() *Cleanroom_Result {
 	return nil
 }
 
-// The request message to list cleanrooms.
-type ListCleanroomsRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// The maximum number of cleanrooms to return.
-	PageSize int32 `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// The page token to resume the list of cleanrooms.
-	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
-	// The AIP compliant order_by to apply to list results according to AIP-132.
-	OrderBy string `protobuf:"bytes,3,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
-}
-
-func (x *ListCleanroomsRequest) Reset() {
-	*x = ListCleanroomsRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *ListCleanroomsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCleanroomsRequest) ProtoMessage() {}
-
-func (x *ListCleanroomsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCleanroomsRequest.ProtoReflect.Descriptor instead.
-func (*ListCleanroomsRequest) Descriptor() ([]byte, []int) {
-	return file_optable_cleanroom_v1_cleanroom_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *ListCleanroomsRequest) GetPageSize() int32 {
-	if x != nil {
-		return x.PageSize
-	}
-	return 0
-}
-
-func (x *ListCleanroomsRequest) GetPageToken() string {
-	if x != nil {
-		return x.PageToken
-	}
-	return ""
-}
-
-func (x *ListCleanroomsRequest) GetOrderBy() string {
-	if x != nil {
-		return x.OrderBy
-	}
-	return ""
-}
-
-// The response message for ListCleanrooms.
-type ListCleanroomsResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// The list of cleanrooms.
-	Cleanrooms []*Cleanroom `protobuf:"bytes,1,rep,name=cleanrooms,proto3" json:"cleanrooms,omitempty"`
-	// The pagination token to retrieve the next page of cleanrooms.
-	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	// The total number of cleanrooms matching the query.
-	TotalSize int32 `protobuf:"varint,3,opt,name=total_size,json=totalSize,proto3" json:"total_size,omitempty"`
-}
-
-func (x *ListCleanroomsResponse) Reset() {
-	*x = ListCleanroomsResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *ListCleanroomsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCleanroomsResponse) ProtoMessage() {}
-
-func (x *ListCleanroomsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCleanroomsResponse.ProtoReflect.Descriptor instead.
-func (*ListCleanroomsResponse) Descriptor() ([]byte, []int) {
-	return file_optable_cleanroom_v1_cleanroom_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *ListCleanroomsResponse) GetCleanrooms() []*Cleanroom {
-	if x != nil {
-		return x.Cleanrooms
-	}
-	return nil
-}
-
-func (x *ListCleanroomsResponse) GetNextPageToken() string {
-	if x != nil {
-		return x.NextPageToken
-	}
-	return ""
-}
-
-func (x *ListCleanroomsResponse) GetTotalSize() int32 {
-	if x != nil {
-		return x.TotalSize
-	}
-	return 0
-}
-
 // The request message to get a cleanroom.
 type GetCleanroomRequest struct {
 	state         protoimpl.MessageState
@@ -517,7 +383,7 @@ type GetCleanroomRequest struct {
 func (x *GetCleanroomRequest) Reset() {
 	*x = GetCleanroomRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[3]
+		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -530,7 +396,7 @@ func (x *GetCleanroomRequest) String() string {
 func (*GetCleanroomRequest) ProtoMessage() {}
 
 func (x *GetCleanroomRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[3]
+	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -543,7 +409,7 @@ func (x *GetCleanroomRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCleanroomRequest.ProtoReflect.Descriptor instead.
 func (*GetCleanroomRequest) Descriptor() ([]byte, []int) {
-	return file_optable_cleanroom_v1_cleanroom_proto_rawDescGZIP(), []int{3}
+	return file_optable_cleanroom_v1_cleanroom_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GetCleanroomRequest) GetName() string {
@@ -566,7 +432,7 @@ type ParticipateCleanroomRequest struct {
 func (x *ParticipateCleanroomRequest) Reset() {
 	*x = ParticipateCleanroomRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[4]
+		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -579,7 +445,7 @@ func (x *ParticipateCleanroomRequest) String() string {
 func (*ParticipateCleanroomRequest) ProtoMessage() {}
 
 func (x *ParticipateCleanroomRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[4]
+	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -592,59 +458,10 @@ func (x *ParticipateCleanroomRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ParticipateCleanroomRequest.ProtoReflect.Descriptor instead.
 func (*ParticipateCleanroomRequest) Descriptor() ([]byte, []int) {
-	return file_optable_cleanroom_v1_cleanroom_proto_rawDescGZIP(), []int{4}
+	return file_optable_cleanroom_v1_cleanroom_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ParticipateCleanroomRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-// The request message for RejectCleanroomInvite.
-type RejectCleanroomInviteRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// Required. The resource name of the cleanroom to reject the invitation for.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-}
-
-func (x *RejectCleanroomInviteRequest) Reset() {
-	*x = RejectCleanroomInviteRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[5]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *RejectCleanroomInviteRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RejectCleanroomInviteRequest) ProtoMessage() {}
-
-func (x *RejectCleanroomInviteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[5]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RejectCleanroomInviteRequest.ProtoReflect.Descriptor instead.
-func (*RejectCleanroomInviteRequest) Descriptor() ([]byte, []int) {
-	return file_optable_cleanroom_v1_cleanroom_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *RejectCleanroomInviteRequest) GetName() string {
 	if x != nil {
 		return x.Name
 	}
@@ -666,7 +483,7 @@ type Cleanroom_Config struct {
 func (x *Cleanroom_Config) Reset() {
 	*x = Cleanroom_Config{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[6]
+		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -679,7 +496,7 @@ func (x *Cleanroom_Config) String() string {
 func (*Cleanroom_Config) ProtoMessage() {}
 
 func (x *Cleanroom_Config) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[6]
+	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -737,7 +554,7 @@ type Cleanroom_Participant struct {
 func (x *Cleanroom_Participant) Reset() {
 	*x = Cleanroom_Participant{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[7]
+		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -750,7 +567,7 @@ func (x *Cleanroom_Participant) String() string {
 func (*Cleanroom_Participant) ProtoMessage() {}
 
 func (x *Cleanroom_Participant) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[7]
+	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -802,7 +619,7 @@ type Cleanroom_Result struct {
 func (x *Cleanroom_Result) Reset() {
 	*x = Cleanroom_Result{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[8]
+		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -815,7 +632,7 @@ func (x *Cleanroom_Result) String() string {
 func (*Cleanroom_Result) ProtoMessage() {}
 
 func (x *Cleanroom_Result) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[8]
+	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -868,7 +685,7 @@ type Cleanroom_Config_PairConfig struct {
 func (x *Cleanroom_Config_PairConfig) Reset() {
 	*x = Cleanroom_Config_PairConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[9]
+		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -881,7 +698,7 @@ func (x *Cleanroom_Config_PairConfig) String() string {
 func (*Cleanroom_Config_PairConfig) ProtoMessage() {}
 
 func (x *Cleanroom_Config_PairConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[9]
+	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -927,7 +744,7 @@ type Cleanroom_Result_PairResult struct {
 func (x *Cleanroom_Result_PairResult) Reset() {
 	*x = Cleanroom_Result_PairResult{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[10]
+		mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -940,7 +757,7 @@ func (x *Cleanroom_Result_PairResult) String() string {
 func (*Cleanroom_Result_PairResult) ProtoMessage() {}
 
 func (x *Cleanroom_Result_PairResult) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[10]
+	mi := &file_optable_cleanroom_v1_cleanroom_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1131,55 +948,32 @@ var file_optable_cleanroom_v1_cleanroom_proto_rawDesc = []byte{
 	0x41, 0x37, 0x0a, 0x1d, 0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x2e, 0x6f, 0x70,
 	0x74, 0x62, 0x6c, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f,
 	0x6d, 0x12, 0x16, 0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x73, 0x2f, 0x7b, 0x63,
-	0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x7d, 0x22, 0x73, 0x0a, 0x15, 0x4c, 0x69, 0x73,
-	0x74, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x73, 0x69, 0x7a, 0x65, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x12,
-	0x1d, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x09, 0x70, 0x61, 0x67, 0x65, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x1e,
-	0x0a, 0x08, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x5f, 0x62, 0x79, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
-	0x42, 0x03, 0xe0, 0x41, 0x01, 0x52, 0x07, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x42, 0x79, 0x22, 0xa0,
-	0x01, 0x0a, 0x16, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d,
-	0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3f, 0x0a, 0x0a, 0x63, 0x6c, 0x65,
-	0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1f, 0x2e,
-	0x6f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f,
-	0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x52, 0x0a,
-	0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x73, 0x12, 0x26, 0x0a, 0x0f, 0x6e, 0x65,
-	0x78, 0x74, 0x5f, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x0d, 0x6e, 0x65, 0x78, 0x74, 0x50, 0x61, 0x67, 0x65, 0x54, 0x6f, 0x6b,
-	0x65, 0x6e, 0x12, 0x1d, 0x0a, 0x0a, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x5f, 0x73, 0x69, 0x7a, 0x65,
-	0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x53, 0x69, 0x7a,
-	0x65, 0x22, 0x50, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f,
-	0x6d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x39, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x25, 0xe0, 0x41, 0x02, 0xfa, 0x41, 0x1f, 0x0a, 0x1d,
-	0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x2e, 0x6f, 0x70, 0x74, 0x62, 0x6c, 0x2e,
-	0x63, 0x6f, 0x6d, 0x2f, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x52, 0x04, 0x6e,
-	0x61, 0x6d, 0x65, 0x22, 0x58, 0x0a, 0x1b, 0x50, 0x61, 0x72, 0x74, 0x69, 0x63, 0x69, 0x70, 0x61,
-	0x74, 0x65, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x12, 0x39, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x42, 0x25, 0xe0, 0x41, 0x02, 0xfa, 0x41, 0x1f, 0x0a, 0x1d, 0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72,
-	0x6f, 0x6f, 0x6d, 0x2e, 0x6f, 0x70, 0x74, 0x62, 0x6c, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x43, 0x6c,
-	0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x59, 0x0a,
-	0x1c, 0x52, 0x65, 0x6a, 0x65, 0x63, 0x74, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d,
-	0x49, 0x6e, 0x76, 0x69, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x39, 0x0a,
-	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x25, 0xe0, 0x41, 0x02,
-	0xfa, 0x41, 0x1f, 0x0a, 0x1d, 0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x2e, 0x6f,
-	0x70, 0x74, 0x62, 0x6c, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f,
-	0x6f, 0x6d, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x42, 0xd3, 0x01, 0x0a, 0x18, 0x63, 0x6f, 0x6d,
-	0x2e, 0x6f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f,
-	0x6f, 0x6d, 0x2e, 0x76, 0x31, 0x42, 0x0e, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d,
-	0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x35, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e,
-	0x63, 0x6f, 0x6d, 0x2f, 0x6f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2f, 0x6d, 0x61, 0x74, 0x63,
-	0x68, 0x2d, 0x61, 0x70, 0x69, 0x2f, 0x67, 0x65, 0x6e, 0x2f, 0x6f, 0x70, 0x74, 0x61, 0x62, 0x6c,
-	0x65, 0x2f, 0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x2f, 0x76, 0x31, 0xa2, 0x02,
-	0x03, 0x4f, 0x43, 0x58, 0xaa, 0x02, 0x14, 0x4f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x43,
-	0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x14, 0x4f, 0x70,
-	0x74, 0x61, 0x62, 0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x5c,
-	0x56, 0x31, 0xe2, 0x02, 0x20, 0x4f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x65,
-	0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74,
-	0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x16, 0x4f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x3a,
-	0x3a, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x7d, 0x22, 0x50, 0x0a, 0x13, 0x47, 0x65, 0x74,
+	0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x39, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x25,
+	0xe0, 0x41, 0x02, 0xfa, 0x41, 0x1f, 0x0a, 0x1d, 0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f,
+	0x6d, 0x2e, 0x6f, 0x70, 0x74, 0x62, 0x6c, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x43, 0x6c, 0x65, 0x61,
+	0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x58, 0x0a, 0x1b, 0x50,
+	0x61, 0x72, 0x74, 0x69, 0x63, 0x69, 0x70, 0x61, 0x74, 0x65, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72,
+	0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x39, 0x0a, 0x04, 0x6e, 0x61,
+	0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x25, 0xe0, 0x41, 0x02, 0xfa, 0x41, 0x1f,
+	0x0a, 0x1d, 0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x2e, 0x6f, 0x70, 0x74, 0x62,
+	0x6c, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x52,
+	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x42, 0xd3, 0x01, 0x0a, 0x18, 0x63, 0x6f, 0x6d, 0x2e, 0x6f, 0x70,
+	0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x2e,
+	0x76, 0x31, 0x42, 0x0e, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x50, 0x72, 0x6f,
+	0x74, 0x6f, 0x50, 0x01, 0x5a, 0x35, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d,
+	0x2f, 0x6f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x2d, 0x61,
+	0x70, 0x69, 0x2f, 0x67, 0x65, 0x6e, 0x2f, 0x6f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2f, 0x63,
+	0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x2f, 0x76, 0x31, 0xa2, 0x02, 0x03, 0x4f, 0x43,
+	0x58, 0xaa, 0x02, 0x14, 0x4f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x43, 0x6c, 0x65, 0x61,
+	0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x14, 0x4f, 0x70, 0x74, 0x61, 0x62,
+	0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x5c, 0x56, 0x31, 0xe2,
+	0x02, 0x20, 0x4f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72,
+	0x6f, 0x6f, 0x6d, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61,
+	0x74, 0x61, 0xea, 0x02, 0x16, 0x4f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x3a, 0x3a, 0x43, 0x6c,
+	0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1195,45 +989,41 @@ func file_optable_cleanroom_v1_cleanroom_proto_rawDescGZIP() []byte {
 }
 
 var file_optable_cleanroom_v1_cleanroom_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_optable_cleanroom_v1_cleanroom_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_optable_cleanroom_v1_cleanroom_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_optable_cleanroom_v1_cleanroom_proto_goTypes = []any{
-	(Cleanroom_State)(0),                 // 0: optable.cleanroom.v1.Cleanroom.State
-	(Cleanroom_Type)(0),                  // 1: optable.cleanroom.v1.Cleanroom.Type
-	(Cleanroom_Participant_State)(0),     // 2: optable.cleanroom.v1.Cleanroom.Participant.State
-	(*Cleanroom)(nil),                    // 3: optable.cleanroom.v1.Cleanroom
-	(*ListCleanroomsRequest)(nil),        // 4: optable.cleanroom.v1.ListCleanroomsRequest
-	(*ListCleanroomsResponse)(nil),       // 5: optable.cleanroom.v1.ListCleanroomsResponse
-	(*GetCleanroomRequest)(nil),          // 6: optable.cleanroom.v1.GetCleanroomRequest
-	(*ParticipateCleanroomRequest)(nil),  // 7: optable.cleanroom.v1.ParticipateCleanroomRequest
-	(*RejectCleanroomInviteRequest)(nil), // 8: optable.cleanroom.v1.RejectCleanroomInviteRequest
-	(*Cleanroom_Config)(nil),             // 9: optable.cleanroom.v1.Cleanroom.Config
-	(*Cleanroom_Participant)(nil),        // 10: optable.cleanroom.v1.Cleanroom.Participant
-	(*Cleanroom_Result)(nil),             // 11: optable.cleanroom.v1.Cleanroom.Result
-	(*Cleanroom_Config_PairConfig)(nil),  // 12: optable.cleanroom.v1.Cleanroom.Config.PairConfig
-	(*Cleanroom_Result_PairResult)(nil),  // 13: optable.cleanroom.v1.Cleanroom.Result.PairResult
-	(*timestamppb.Timestamp)(nil),        // 14: google.protobuf.Timestamp
+	(Cleanroom_State)(0),                // 0: optable.cleanroom.v1.Cleanroom.State
+	(Cleanroom_Type)(0),                 // 1: optable.cleanroom.v1.Cleanroom.Type
+	(Cleanroom_Participant_State)(0),    // 2: optable.cleanroom.v1.Cleanroom.Participant.State
+	(*Cleanroom)(nil),                   // 3: optable.cleanroom.v1.Cleanroom
+	(*GetCleanroomRequest)(nil),         // 4: optable.cleanroom.v1.GetCleanroomRequest
+	(*ParticipateCleanroomRequest)(nil), // 5: optable.cleanroom.v1.ParticipateCleanroomRequest
+	(*Cleanroom_Config)(nil),            // 6: optable.cleanroom.v1.Cleanroom.Config
+	(*Cleanroom_Participant)(nil),       // 7: optable.cleanroom.v1.Cleanroom.Participant
+	(*Cleanroom_Result)(nil),            // 8: optable.cleanroom.v1.Cleanroom.Result
+	(*Cleanroom_Config_PairConfig)(nil), // 9: optable.cleanroom.v1.Cleanroom.Config.PairConfig
+	(*Cleanroom_Result_PairResult)(nil), // 10: optable.cleanroom.v1.Cleanroom.Result.PairResult
+	(*timestamppb.Timestamp)(nil),       // 11: google.protobuf.Timestamp
 }
 var file_optable_cleanroom_v1_cleanroom_proto_depIdxs = []int32{
-	14, // 0: optable.cleanroom.v1.Cleanroom.create_time:type_name -> google.protobuf.Timestamp
-	14, // 1: optable.cleanroom.v1.Cleanroom.update_time:type_name -> google.protobuf.Timestamp
-	14, // 2: optable.cleanroom.v1.Cleanroom.expire_time:type_name -> google.protobuf.Timestamp
+	11, // 0: optable.cleanroom.v1.Cleanroom.create_time:type_name -> google.protobuf.Timestamp
+	11, // 1: optable.cleanroom.v1.Cleanroom.update_time:type_name -> google.protobuf.Timestamp
+	11, // 2: optable.cleanroom.v1.Cleanroom.expire_time:type_name -> google.protobuf.Timestamp
 	0,  // 3: optable.cleanroom.v1.Cleanroom.state:type_name -> optable.cleanroom.v1.Cleanroom.State
 	1,  // 4: optable.cleanroom.v1.Cleanroom.type:type_name -> optable.cleanroom.v1.Cleanroom.Type
-	9,  // 5: optable.cleanroom.v1.Cleanroom.config:type_name -> optable.cleanroom.v1.Cleanroom.Config
-	10, // 6: optable.cleanroom.v1.Cleanroom.participants:type_name -> optable.cleanroom.v1.Cleanroom.Participant
-	11, // 7: optable.cleanroom.v1.Cleanroom.result:type_name -> optable.cleanroom.v1.Cleanroom.Result
-	3,  // 8: optable.cleanroom.v1.ListCleanroomsResponse.cleanrooms:type_name -> optable.cleanroom.v1.Cleanroom
-	12, // 9: optable.cleanroom.v1.Cleanroom.Config.pair_config:type_name -> optable.cleanroom.v1.Cleanroom.Config.PairConfig
-	2,  // 10: optable.cleanroom.v1.Cleanroom.Participant.state:type_name -> optable.cleanroom.v1.Cleanroom.Participant.State
-	14, // 11: optable.cleanroom.v1.Cleanroom.Participant.update_time:type_name -> google.protobuf.Timestamp
-	14, // 12: optable.cleanroom.v1.Cleanroom.Participant.invitation_update_time:type_name -> google.protobuf.Timestamp
-	13, // 13: optable.cleanroom.v1.Cleanroom.Result.pair_result:type_name -> optable.cleanroom.v1.Cleanroom.Result.PairResult
-	14, // 14: optable.cleanroom.v1.Cleanroom.Result.PairResult.create_time:type_name -> google.protobuf.Timestamp
-	15, // [15:15] is the sub-list for method output_type
-	15, // [15:15] is the sub-list for method input_type
-	15, // [15:15] is the sub-list for extension type_name
-	15, // [15:15] is the sub-list for extension extendee
-	0,  // [0:15] is the sub-list for field type_name
+	6,  // 5: optable.cleanroom.v1.Cleanroom.config:type_name -> optable.cleanroom.v1.Cleanroom.Config
+	7,  // 6: optable.cleanroom.v1.Cleanroom.participants:type_name -> optable.cleanroom.v1.Cleanroom.Participant
+	8,  // 7: optable.cleanroom.v1.Cleanroom.result:type_name -> optable.cleanroom.v1.Cleanroom.Result
+	9,  // 8: optable.cleanroom.v1.Cleanroom.Config.pair_config:type_name -> optable.cleanroom.v1.Cleanroom.Config.PairConfig
+	2,  // 9: optable.cleanroom.v1.Cleanroom.Participant.state:type_name -> optable.cleanroom.v1.Cleanroom.Participant.State
+	11, // 10: optable.cleanroom.v1.Cleanroom.Participant.update_time:type_name -> google.protobuf.Timestamp
+	11, // 11: optable.cleanroom.v1.Cleanroom.Participant.invitation_update_time:type_name -> google.protobuf.Timestamp
+	10, // 12: optable.cleanroom.v1.Cleanroom.Result.pair_result:type_name -> optable.cleanroom.v1.Cleanroom.Result.PairResult
+	11, // 13: optable.cleanroom.v1.Cleanroom.Result.PairResult.create_time:type_name -> google.protobuf.Timestamp
+	14, // [14:14] is the sub-list for method output_type
+	14, // [14:14] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_optable_cleanroom_v1_cleanroom_proto_init() }
@@ -1255,30 +1045,6 @@ func file_optable_cleanroom_v1_cleanroom_proto_init() {
 			}
 		}
 		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[1].Exporter = func(v any, i int) any {
-			switch v := v.(*ListCleanroomsRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[2].Exporter = func(v any, i int) any {
-			switch v := v.(*ListCleanroomsResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[3].Exporter = func(v any, i int) any {
 			switch v := v.(*GetCleanroomRequest); i {
 			case 0:
 				return &v.state
@@ -1290,7 +1056,7 @@ func file_optable_cleanroom_v1_cleanroom_proto_init() {
 				return nil
 			}
 		}
-		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[4].Exporter = func(v any, i int) any {
+		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[2].Exporter = func(v any, i int) any {
 			switch v := v.(*ParticipateCleanroomRequest); i {
 			case 0:
 				return &v.state
@@ -1302,19 +1068,7 @@ func file_optable_cleanroom_v1_cleanroom_proto_init() {
 				return nil
 			}
 		}
-		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[5].Exporter = func(v any, i int) any {
-			switch v := v.(*RejectCleanroomInviteRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[6].Exporter = func(v any, i int) any {
+		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[3].Exporter = func(v any, i int) any {
 			switch v := v.(*Cleanroom_Config); i {
 			case 0:
 				return &v.state
@@ -1326,7 +1080,7 @@ func file_optable_cleanroom_v1_cleanroom_proto_init() {
 				return nil
 			}
 		}
-		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[7].Exporter = func(v any, i int) any {
+		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[4].Exporter = func(v any, i int) any {
 			switch v := v.(*Cleanroom_Participant); i {
 			case 0:
 				return &v.state
@@ -1338,7 +1092,7 @@ func file_optable_cleanroom_v1_cleanroom_proto_init() {
 				return nil
 			}
 		}
-		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[8].Exporter = func(v any, i int) any {
+		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[5].Exporter = func(v any, i int) any {
 			switch v := v.(*Cleanroom_Result); i {
 			case 0:
 				return &v.state
@@ -1350,7 +1104,7 @@ func file_optable_cleanroom_v1_cleanroom_proto_init() {
 				return nil
 			}
 		}
-		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[9].Exporter = func(v any, i int) any {
+		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[6].Exporter = func(v any, i int) any {
 			switch v := v.(*Cleanroom_Config_PairConfig); i {
 			case 0:
 				return &v.state
@@ -1362,7 +1116,7 @@ func file_optable_cleanroom_v1_cleanroom_proto_init() {
 				return nil
 			}
 		}
-		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[10].Exporter = func(v any, i int) any {
+		file_optable_cleanroom_v1_cleanroom_proto_msgTypes[7].Exporter = func(v any, i int) any {
 			switch v := v.(*Cleanroom_Result_PairResult); i {
 			case 0:
 				return &v.state
@@ -1375,10 +1129,10 @@ func file_optable_cleanroom_v1_cleanroom_proto_init() {
 			}
 		}
 	}
-	file_optable_cleanroom_v1_cleanroom_proto_msgTypes[6].OneofWrappers = []any{
+	file_optable_cleanroom_v1_cleanroom_proto_msgTypes[3].OneofWrappers = []any{
 		(*Cleanroom_Config_PairConfig_)(nil),
 	}
-	file_optable_cleanroom_v1_cleanroom_proto_msgTypes[8].OneofWrappers = []any{
+	file_optable_cleanroom_v1_cleanroom_proto_msgTypes[5].OneofWrappers = []any{
 		(*Cleanroom_Result_PairResult_)(nil),
 	}
 	type x struct{}
@@ -1387,7 +1141,7 @@ func file_optable_cleanroom_v1_cleanroom_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_optable_cleanroom_v1_cleanroom_proto_rawDesc,
 			NumEnums:      3,
-			NumMessages:   11,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

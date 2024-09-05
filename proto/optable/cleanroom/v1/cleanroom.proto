@@ -158,28 +158,6 @@ message Cleanroom {
   Result result = 11 [(google.api.field_behavior) = OUTPUT_ONLY];
 }
 
-// The request message to list cleanrooms.
-message ListCleanroomsRequest {
-  // The maximum number of cleanrooms to return.
-  int32 page_size = 1;
-
-  // The page token to resume the list of cleanrooms.
-  string page_token = 2;
-
-  // The AIP compliant order_by to apply to list results according to AIP-132.
-  string order_by = 3 [(google.api.field_behavior) = OPTIONAL];
-}
-
-// The response message for ListCleanrooms.
-message ListCleanroomsResponse {
-  // The list of cleanrooms.
-  repeated Cleanroom cleanrooms = 1;
-  // The pagination token to retrieve the next page of cleanrooms.
-  string next_page_token = 2;
-  // The total number of cleanrooms matching the query.
-  int32 total_size = 3;
-}
-
 // The request message to get a cleanroom.
 message GetCleanroomRequest {
   // Required. The resource name of the cleanroom to retrieve.
@@ -194,17 +172,6 @@ message GetCleanroomRequest {
 // The request message for ParticipateCleanroom.
 message ParticipateCleanroomRequest {
   // Required. The resource name of the cleanroom to participate in.
-  string name = 1 [
-    (google.api.field_behavior) = REQUIRED,
-    (google.api.resource_reference) = {
-      type: "cleanroom.optbl.com/Cleanroom"
-    }
-  ];
-}
-
-// The request message for RejectCleanroomInvite.
-message RejectCleanroomInviteRequest {
-  // Required. The resource name of the cleanroom to reject the invitation for.
   string name = 1 [
     (google.api.field_behavior) = REQUIRED,
     (google.api.resource_reference) = {
