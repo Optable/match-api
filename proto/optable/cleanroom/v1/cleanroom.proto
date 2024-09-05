@@ -1,0 +1,214 @@
+syntax = "proto3";
+package optable.cleanroom.v1;
+option go_package = "github.com/optable/match-api/gen/optable/cleanroom/v1";
+
+import "google/protobuf/timestamp.proto";
+import "google/api/field_behavior.proto";
+import "google/api/resource.proto";
+
+
+// A Cleanroom resource is represents a privacy preserving
+// data clean room that allows secure data analysis on data contributed
+// by multiple parties.
+message Cleanroom {
+  option (google.api.resource) = {
+    type: "cleanroom.optbl.com/Cleanroom"
+    pattern: "cleanrooms/{cleanroom}"
+  };
+
+  // The resource name of the clean room.
+  string name = 1 [(google.api.field_behavior) = IDENTIFIER];
+
+  // The display name of the clean room.
+  string display_name = 2 [(google.api.field_behavior) = REQUIRED];
+
+  // The description of the cleanroom.
+  string description = 3 [(google.api.field_behavior) = OPTIONAL];
+
+  // Indicates when the cleanroom was created.
+  google.protobuf.Timestamp create_time = 4 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // Indicates when the cleanroom was last updated.
+  google.protobuf.Timestamp update_time = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // Indicates when the cleanroom will expire.
+  google.protobuf.Timestamp expire_time = 6;
+
+  //buf:lint:ignore ENUM_VALUE_PREFIX
+  // The possible states of a cleanroom.
+  enum State {
+    // Unspecified state.
+    STATE_UNSPECIFIED = 0;
+    // Cleanroom is being created.
+    CREATING = 1;
+    // Cleanroom is active.
+    ACTIVE = 2;
+    // Cleanroom is ending.
+    ENDING = 3;
+    // Cleanroom has ended.
+    ENDED = 4;
+    // Cleanroom has failed.
+    FAILED = 5;
+    // Cleanroom is archived.
+    ARCHIVED = 6;
+  }
+
+  // State of the cleanroom
+  State state = 7 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  //buf:lint:ignore ENUM_VALUE_PREFIX
+  // The possible types of a cleanroom.
+  enum Type {
+    // Unspecified type.
+    TYPE_UNSPECIFIED = 0;
+    // Clean room is a Publisher Advertiser Identifier Reconciliation (PAIR) clean room.
+    PAIR = 1;
+  }
+
+  // Type of the cleanroom.
+  Type type = 8 [(google.api.field_behavior) = REQUIRED];
+
+  // The configuration of the clean room.
+  message Config {
+    oneof config {
+      // Configuration for a PAIR cleanroom.
+      PairConfig pair_config = 1;
+    }
+
+    // Configuration for a PAIR cleanroom.
+    message PairConfig {
+      // The advertiser service account to access data in storage bucket.
+      string service_account = 1 [(google.api.field_behavior) = REQUIRED];
+    }
+  }
+
+  // Configuration of the clean room.
+  Config config = 9 [(google.api.field_behavior) = REQUIRED];
+
+  // Participant resource represents a participant of the cleanroom.
+  message Participant {
+    //buf:lint:ignore ENUM_VALUE_PREFIX
+    enum State {
+      // Unspecified state.
+      STATE_UNSPECIFIED = 0;
+      // Participant is invited to the cleanroom.
+      INVITED = 1;
+      // Participant is running the cleanroom operation.
+      RUNNING = 2;
+      // Participant's cleanroom operation has succeeded.
+      SUCCEEDED = 3;
+      // Participants cleanroom has failed, likely encountered an error.
+      FAILED = 4;
+      // Participant has rejected the cleanroom invitation.
+      REJECTED = 5;
+      // Participant has been revoked from the cleanroom.
+      REVOKED = 6;
+      // Participant is contributing data.
+      DATA_CONTRIBUTING = 7;
+      // Participant has contributed data.
+      DATA_CONTRIBUTED = 8;
+      // Participant is transforming the data for the PAIR cleanroom.
+      DATA_TRANSFORMING = 9;
+      // Participant has transformed the data for the PAIR cleanroom.
+      DATA_TRANSFORMED = 10;
+    }
+
+    // State of the participant.
+    State state = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+    // Update time of the participant.
+    google.protobuf.Timestamp update_time = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+    // Invitation update time for the participant.
+    google.protobuf.Timestamp invitation_update_time = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
+  }
+
+  // Participants of the cleanroom.
+  Participant participants = 10 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // Result is the resource that represents the result of the cleanroom operation.
+  message Result {
+    oneof result {
+      PairResult pair_result = 1;
+    }
+
+    // Result of the PAIR cleanroom operation.
+    message PairResult {
+      // Indicates when the result was created.
+      google.protobuf.Timestamp create_time = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+      // Error of the result.
+      string error = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+      // Unique identitfier of the advertiser and publisher pair.
+      string advertiser_publisher_id = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+      // The fully qualified cloud storage URL where the double encrypted PAIR IDs from the publisher are stored.
+      string publisher_pair_ids_url = 4 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+      // The fully qualified cloud storage URL where the double encrypted PAIR IDs from the advertiser are stored.
+      string advertiser_pair_ids_url = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+      // The fully qualified cloud storage URL where the once decrypted matched PAIR IDs are stored. This is optional.
+      string matched_pair_ids_url = 6 [(google.api.field_behavior) = OUTPUT_ONLY];
+    }
+  }
+
+  // The result of the cleanroom.
+  Result result = 11 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// The request message to list cleanrooms.
+message ListCleanroomsRequest {
+  // The maximum number of cleanrooms to return.
+  int32 page_size = 1;
+
+  // The page token to resume the list of cleanrooms.
+  string page_token = 2;
+
+  // The AIP compliant order_by to apply to list results according to AIP-132.
+  string order_by = 3 [(google.api.field_behavior) = OPTIONAL];
+}
+
+// The response message for ListCleanrooms.
+message ListCleanroomsResponse {
+  // The list of cleanrooms.
+  repeated Cleanroom cleanrooms = 1;
+  // The pagination token to retrieve the next page of cleanrooms.
+  string next_page_token = 2;
+  // The total number of cleanrooms matching the query.
+  int32 total_size = 3;
+}
+
+// The request message to get a cleanroom.
+message GetCleanroomRequest {
+  // Required. The resource name of the cleanroom to retrieve.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "cleanroom.optbl.com/Cleanroom"
+    }
+  ];
+}
+
+// The request message for ParticipateCleanroom.
+message ParticipateCleanroomRequest {
+  // Required. The resource name of the cleanroom to participate in.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "cleanroom.optbl.com/Cleanroom"
+    }
+  ];
+}
+
+// The request message for RejectCleanroomInvite.
+message RejectCleanroomInviteRequest {
+  // Required. The resource name of the cleanroom to reject the invitation for.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "cleanroom.optbl.com/Cleanroom"
+    }
+  ];
+}
