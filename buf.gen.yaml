@@ -1,0 +1,12 @@
+version: v2
+# 'clean', when set to true, deletes the directories, zip files, and/or jar files specified in the `out` field for
+# all plugins before running code generation.
+clean: true
+managed:
+  enabled: true
+plugins:
+  - remote: buf.build/protocolbuffers/go
+    out: gen
+    opt: paths=source_relative
+inputs:
+  - directory: proto
