@@ -2,48 +2,12 @@ syntax = "proto3";
 package match.v1;
 option go_package = "github.com/optable/api/match/v1";
 
-message SnowflakePartner {
-  // Required. Token used to authenticate the external partner.
-  string token = 1;
-  // Required. The region of the partner's snowflake account
-  string region = 2;
-  // Required. The account locator ID of the snowflake partner
-  string account_locator_id = 3;
-}
-
-message DCNPartner {
-  // Required. Token used to authenticate the external partner.
-  string token = 1;
-}
-
-message HeadlessPartner {
-  // Required. Public Key of the external partner.
-  string public_key = 1;
-  // Required. Token used to authenticate the external partner.
-  string token = 2;
-}
-
-message AwsPartner {
-  // Required. Token used to authenticate the external partner.
-  string token = 1;
-  // Required. The region of the partner's AWS account
-  string region = 2;
-  // Required. The account ID of the AWS partner
-  string account_id = 3;
-}
-
 message RegisterPartnerReq {
+  reserved 3, 4, 5, 6;
   // Public key that will be used to authenticate this partner.
   string public_key = 1;
   // Secret token used to identify the partner invitation.
   string token = 2;
-  // Optional. Partnership kind aware registration request
-  oneof PartnerInfo {
-    DCNPartner dcn_partner = 3;
-    HeadlessPartner headless_partner = 4;
-    SnowflakePartner snowflake_partner = 5;
-    AwsPartner aws_partner = 6;
-  }
 }
 
 message PartnerInitToken {
