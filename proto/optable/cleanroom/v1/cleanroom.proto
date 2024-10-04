@@ -77,8 +77,26 @@ message Cleanroom {
 
     // Configuration for a PAIR cleanroom.
     message PairConfig {
-      // The advertiser service account to access data in storage bucket.
-      string service_account = 1 [(google.api.field_behavior) = REQUIRED];
+      reserved 1;
+      message AuthToken {
+        string token = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
+        google.protobuf.Timestamp expire_time = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+      }
+
+      // The auth-token for the advertiser to use to interact with the cleanroom's provided bucket
+      AuthToken token = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+      // The URL of the advertiser encrypted and hashed data.
+      string advertiser_encrypted_data_url = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+      // The URL of the publisher encrypted and hashed data.
+      string publisher_encrypted_data_url = 4 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+      // The URL of the advertiser re-encrypted data by the publisher.
+      string advertiser_twice_encrypted_data_url = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+      // The URL of the publisher re-encrypted data by the advertiser.
+      string publisher_twice_encrypted_data_url = 6 [(google.api.field_behavior) = OUTPUT_ONLY];
     }
   }
 
@@ -151,6 +169,17 @@ message Cleanroom {
 
       // The fully qualified cloud storage URL where the once decrypted matched PAIR IDs are stored. This is optional.
       string matched_pair_ids_url = 6 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+      // The match rate of the pair cleanroom result.
+      message MatchRate {
+        // The match rate of the pair cleanroom result.
+        float rate = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
+        // details on the match rate if it isn't available.
+        // ex: Below threshold, too much overlap, etc.
+        string details = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+      }
+      // Match rate of the pair cleanroom result.
+      MatchRate match_rate = 7 [(google.api.field_behavior) = OUTPUT_ONLY];
     }
   }
 
@@ -161,17 +190,6 @@ message Cleanroom {
 // The request message to get a cleanroom.
 message GetCleanroomRequest {
   // Required. The resource name of the cleanroom to retrieve.
-  string name = 1 [
-    (google.api.field_behavior) = REQUIRED,
-    (google.api.resource_reference) = {
-      type: "cleanroom.optbl.com/Cleanroom"
-    }
-  ];
-}
-
-// The request message for ParticipateCleanroom.
-message ParticipateCleanroomRequest {
-  // Required. The resource name of the cleanroom to participate in.
   string name = 1 [
     (google.api.field_behavior) = REQUIRED,
     (google.api.resource_reference) = {
