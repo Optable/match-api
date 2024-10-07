@@ -142,7 +142,7 @@ message Cleanroom {
   }
 
   // Participants of the cleanroom.
-  Participant participants = 10 [(google.api.field_behavior) = OUTPUT_ONLY];
+  repeated Participant participants = 10 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // Result is the resource that represents the result of the cleanroom operation.
   message Result {
@@ -184,7 +184,7 @@ message Cleanroom {
   }
 
   // The result of the cleanroom.
-  Result result = 11 [(google.api.field_behavior) = OUTPUT_ONLY];
+  Result results = 11 [(google.api.field_behavior) = OUTPUT_ONLY];
 }
 
 // The request message to get a cleanroom.
