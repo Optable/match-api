@@ -196,4 +196,28 @@ message GetCleanroomRequest {
       type: "cleanroom.optbl.com/Cleanroom"
     }
   ];
+
+  //buf:lint:ignore ENUM_VALUE_PREFIX
+  enum View {
+    // Unspecified state.
+    STATE_UNSPECIFIED = 0;
+    // A view with everything except the sensitive info, the token
+    FULL = 1;
+    // A view with basic metadata of the cleanroom and the sensitive info, the token
+    SENSITIVE = 2;
+  }
+
+  // The view to retrieve the cleanroom.
+  View view = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+// The request message to refresh the token of a cleanroom.
+message RefreshTokenRequest {
+  // Required. The resource name of the cleanroom to refresh its token.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "cleanroom.optbl.com/Cleanroom"
+    }
+  ];
 }
