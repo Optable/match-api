@@ -229,6 +229,59 @@ func (Cleanroom_Participant_State) EnumDescriptor() ([]byte, []int) {
 	return file_optable_external_v1_cleanroom_proto_rawDescGZIP(), []int{0, 1, 0}
 }
 
+//buf:lint:ignore ENUM_VALUE_PREFIX
+type GetCleanroomRequest_View int32
+
+const (
+	// Unspecified state.
+	GetCleanroomRequest_STATE_UNSPECIFIED GetCleanroomRequest_View = 0
+	// A view with everything except the sensitive info, the token
+	GetCleanroomRequest_FULL GetCleanroomRequest_View = 1
+	// A view with basic metadata of the cleanroom and the sensitive info, the token
+	GetCleanroomRequest_SENSITIVE GetCleanroomRequest_View = 2
+)
+
+// Enum value maps for GetCleanroomRequest_View.
+var (
+	GetCleanroomRequest_View_name = map[int32]string{
+		0: "STATE_UNSPECIFIED",
+		1: "FULL",
+		2: "SENSITIVE",
+	}
+	GetCleanroomRequest_View_value = map[string]int32{
+		"STATE_UNSPECIFIED": 0,
+		"FULL":              1,
+		"SENSITIVE":         2,
+	}
+)
+
+func (x GetCleanroomRequest_View) Enum() *GetCleanroomRequest_View {
+	p := new(GetCleanroomRequest_View)
+	*p = x
+	return p
+}
+
+func (x GetCleanroomRequest_View) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (GetCleanroomRequest_View) Descriptor() protoreflect.EnumDescriptor {
+	return file_optable_external_v1_cleanroom_proto_enumTypes[3].Descriptor()
+}
+
+func (GetCleanroomRequest_View) Type() protoreflect.EnumType {
+	return &file_optable_external_v1_cleanroom_proto_enumTypes[3]
+}
+
+func (x GetCleanroomRequest_View) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use GetCleanroomRequest_View.Descriptor instead.
+func (GetCleanroomRequest_View) EnumDescriptor() ([]byte, []int) {
+	return file_optable_external_v1_cleanroom_proto_rawDescGZIP(), []int{1, 0}
+}
+
 // A Cleanroom resource is represents a privacy preserving
 // data clean room that allows secure data analysis on data contributed
 // by multiple parties.
@@ -378,6 +431,8 @@ type GetCleanroomRequest struct {
 
 	// Required. The resource name of the cleanroom to retrieve.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// The view to retrieve the cleanroom.
+	View GetCleanroomRequest_View `protobuf:"varint,2,opt,name=view,proto3,enum=optable.external.v1.GetCleanroomRequest_View" json:"view,omitempty"`
 }
 
 func (x *GetCleanroomRequest) Reset() {
@@ -419,6 +474,62 @@ func (x *GetCleanroomRequest) GetName() string {
 	return ""
 }
 
+func (x *GetCleanroomRequest) GetView() GetCleanroomRequest_View {
+	if x != nil {
+		return x.View
+	}
+	return GetCleanroomRequest_STATE_UNSPECIFIED
+}
+
+// The request message to refresh the token of a cleanroom.
+type RefreshTokenRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Required. The resource name of the cleanroom to refresh its token.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+}
+
+func (x *RefreshTokenRequest) Reset() {
+	*x = RefreshTokenRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_optable_external_v1_cleanroom_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RefreshTokenRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RefreshTokenRequest) ProtoMessage() {}
+
+func (x *RefreshTokenRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_optable_external_v1_cleanroom_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RefreshTokenRequest.ProtoReflect.Descriptor instead.
+func (*RefreshTokenRequest) Descriptor() ([]byte, []int) {
+	return file_optable_external_v1_cleanroom_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *RefreshTokenRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
 // The configuration of the clean room.
 type Cleanroom_Config struct {
 	state         protoimpl.MessageState
@@ -434,7 +545,7 @@ type Cleanroom_Config struct {
 func (x *Cleanroom_Config) Reset() {
 	*x = Cleanroom_Config{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_external_v1_cleanroom_proto_msgTypes[2]
+		mi := &file_optable_external_v1_cleanroom_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -447,7 +558,7 @@ func (x *Cleanroom_Config) String() string {
 func (*Cleanroom_Config) ProtoMessage() {}
 
 func (x *Cleanroom_Config) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_external_v1_cleanroom_proto_msgTypes[2]
+	mi := &file_optable_external_v1_cleanroom_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -505,7 +616,7 @@ type Cleanroom_Participant struct {
 func (x *Cleanroom_Participant) Reset() {
 	*x = Cleanroom_Participant{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_external_v1_cleanroom_proto_msgTypes[3]
+		mi := &file_optable_external_v1_cleanroom_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -518,7 +629,7 @@ func (x *Cleanroom_Participant) String() string {
 func (*Cleanroom_Participant) ProtoMessage() {}
 
 func (x *Cleanroom_Participant) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_external_v1_cleanroom_proto_msgTypes[3]
+	mi := &file_optable_external_v1_cleanroom_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -570,7 +681,7 @@ type Cleanroom_Result struct {
 func (x *Cleanroom_Result) Reset() {
 	*x = Cleanroom_Result{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_external_v1_cleanroom_proto_msgTypes[4]
+		mi := &file_optable_external_v1_cleanroom_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -583,7 +694,7 @@ func (x *Cleanroom_Result) String() string {
 func (*Cleanroom_Result) ProtoMessage() {}
 
 func (x *Cleanroom_Result) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_external_v1_cleanroom_proto_msgTypes[4]
+	mi := &file_optable_external_v1_cleanroom_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -644,7 +755,7 @@ type Cleanroom_Config_PairConfig struct {
 func (x *Cleanroom_Config_PairConfig) Reset() {
 	*x = Cleanroom_Config_PairConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_external_v1_cleanroom_proto_msgTypes[5]
+		mi := &file_optable_external_v1_cleanroom_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -657,7 +768,7 @@ func (x *Cleanroom_Config_PairConfig) String() string {
 func (*Cleanroom_Config_PairConfig) ProtoMessage() {}
 
 func (x *Cleanroom_Config_PairConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_external_v1_cleanroom_proto_msgTypes[5]
+	mi := &file_optable_external_v1_cleanroom_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -720,7 +831,7 @@ type Cleanroom_Config_PairConfig_AuthToken struct {
 func (x *Cleanroom_Config_PairConfig_AuthToken) Reset() {
 	*x = Cleanroom_Config_PairConfig_AuthToken{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_external_v1_cleanroom_proto_msgTypes[6]
+		mi := &file_optable_external_v1_cleanroom_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -733,7 +844,7 @@ func (x *Cleanroom_Config_PairConfig_AuthToken) String() string {
 func (*Cleanroom_Config_PairConfig_AuthToken) ProtoMessage() {}
 
 func (x *Cleanroom_Config_PairConfig_AuthToken) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_external_v1_cleanroom_proto_msgTypes[6]
+	mi := &file_optable_external_v1_cleanroom_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -788,7 +899,7 @@ type Cleanroom_Result_PairResult struct {
 func (x *Cleanroom_Result_PairResult) Reset() {
 	*x = Cleanroom_Result_PairResult{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_external_v1_cleanroom_proto_msgTypes[7]
+		mi := &file_optable_external_v1_cleanroom_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -801,7 +912,7 @@ func (x *Cleanroom_Result_PairResult) String() string {
 func (*Cleanroom_Result_PairResult) ProtoMessage() {}
 
 func (x *Cleanroom_Result_PairResult) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_external_v1_cleanroom_proto_msgTypes[7]
+	mi := &file_optable_external_v1_cleanroom_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -882,7 +993,7 @@ type Cleanroom_Result_PairResult_MatchRate struct {
 func (x *Cleanroom_Result_PairResult_MatchRate) Reset() {
 	*x = Cleanroom_Result_PairResult_MatchRate{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_optable_external_v1_cleanroom_proto_msgTypes[8]
+		mi := &file_optable_external_v1_cleanroom_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -895,7 +1006,7 @@ func (x *Cleanroom_Result_PairResult_MatchRate) String() string {
 func (*Cleanroom_Result_PairResult_MatchRate) ProtoMessage() {}
 
 func (x *Cleanroom_Result_PairResult_MatchRate) ProtoReflect() protoreflect.Message {
-	mi := &file_optable_external_v1_cleanroom_proto_msgTypes[8]
+	mi := &file_optable_external_v1_cleanroom_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1097,25 +1208,38 @@ var file_optable_external_v1_cleanroom_proto_rawDesc = []byte{
 	0x72, 0x6f, 0x6f, 0x6d, 0x2e, 0x6f, 0x70, 0x74, 0x62, 0x6c, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x43,
 	0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x12, 0x16, 0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72,
 	0x6f, 0x6f, 0x6d, 0x73, 0x2f, 0x7b, 0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x7d,
-	0x22, 0x50, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x39, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x25, 0xe0, 0x41, 0x02, 0xfa, 0x41, 0x1f, 0x0a, 0x1d, 0x63,
-	0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x2e, 0x6f, 0x70, 0x74, 0x62, 0x6c, 0x2e, 0x63,
-	0x6f, 0x6d, 0x2f, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x52, 0x04, 0x6e, 0x61,
-	0x6d, 0x65, 0x42, 0xcd, 0x01, 0x0a, 0x17, 0x63, 0x6f, 0x6d, 0x2e, 0x6f, 0x70, 0x74, 0x61, 0x62,
-	0x6c, 0x65, 0x2e, 0x65, 0x78, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2e, 0x76, 0x31, 0x42, 0x0e,
-	0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01,
-	0x5a, 0x34, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x6f, 0x70, 0x74,
-	0x61, 0x62, 0x6c, 0x65, 0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x2d, 0x61, 0x70, 0x69, 0x2f, 0x67,
-	0x65, 0x6e, 0x2f, 0x6f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2f, 0x65, 0x78, 0x74, 0x65, 0x72,
-	0x6e, 0x61, 0x6c, 0x2f, 0x76, 0x31, 0xa2, 0x02, 0x03, 0x4f, 0x45, 0x58, 0xaa, 0x02, 0x13, 0x4f,
-	0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x45, 0x78, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2e,
-	0x56, 0x31, 0xca, 0x02, 0x13, 0x4f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x5c, 0x45, 0x78, 0x74,
-	0x65, 0x72, 0x6e, 0x61, 0x6c, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x1f, 0x4f, 0x70, 0x74, 0x61, 0x62,
-	0x6c, 0x65, 0x5c, 0x45, 0x78, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x5c, 0x56, 0x31, 0x5c, 0x47,
-	0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x15, 0x4f, 0x70, 0x74,
-	0x61, 0x62, 0x6c, 0x65, 0x3a, 0x3a, 0x45, 0x78, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x3a, 0x3a,
-	0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x22, 0xd0, 0x01, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f,
+	0x6d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x39, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x25, 0xe0, 0x41, 0x02, 0xfa, 0x41, 0x1f, 0x0a, 0x1d,
+	0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x2e, 0x6f, 0x70, 0x74, 0x62, 0x6c, 0x2e,
+	0x63, 0x6f, 0x6d, 0x2f, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x52, 0x04, 0x6e,
+	0x61, 0x6d, 0x65, 0x12, 0x46, 0x0a, 0x04, 0x76, 0x69, 0x65, 0x77, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x0e, 0x32, 0x2d, 0x2e, 0x6f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x65, 0x78, 0x74, 0x65,
+	0x72, 0x6e, 0x61, 0x6c, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6c, 0x65, 0x61, 0x6e,
+	0x72, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x56, 0x69, 0x65, 0x77,
+	0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x04, 0x76, 0x69, 0x65, 0x77, 0x22, 0x36, 0x0a, 0x04, 0x56,
+	0x69, 0x65, 0x77, 0x12, 0x15, 0x0a, 0x11, 0x53, 0x54, 0x41, 0x54, 0x45, 0x5f, 0x55, 0x4e, 0x53,
+	0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x46, 0x55,
+	0x4c, 0x4c, 0x10, 0x01, 0x12, 0x0d, 0x0a, 0x09, 0x53, 0x45, 0x4e, 0x53, 0x49, 0x54, 0x49, 0x56,
+	0x45, 0x10, 0x02, 0x22, 0x50, 0x0a, 0x13, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x54, 0x6f,
+	0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x39, 0x0a, 0x04, 0x6e, 0x61,
+	0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x25, 0xe0, 0x41, 0x02, 0xfa, 0x41, 0x1f,
+	0x0a, 0x1d, 0x63, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x2e, 0x6f, 0x70, 0x74, 0x62,
+	0x6c, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x52,
+	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x42, 0xcd, 0x01, 0x0a, 0x17, 0x63, 0x6f, 0x6d, 0x2e, 0x6f, 0x70,
+	0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x65, 0x78, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2e, 0x76,
+	0x31, 0x42, 0x0e, 0x43, 0x6c, 0x65, 0x61, 0x6e, 0x72, 0x6f, 0x6f, 0x6d, 0x50, 0x72, 0x6f, 0x74,
+	0x6f, 0x50, 0x01, 0x5a, 0x34, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
+	0x6f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x2d, 0x61, 0x70,
+	0x69, 0x2f, 0x67, 0x65, 0x6e, 0x2f, 0x6f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2f, 0x65, 0x78,
+	0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x76, 0x31, 0xa2, 0x02, 0x03, 0x4f, 0x45, 0x58, 0xaa,
+	0x02, 0x13, 0x4f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x45, 0x78, 0x74, 0x65, 0x72, 0x6e,
+	0x61, 0x6c, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x13, 0x4f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x5c,
+	0x45, 0x78, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x1f, 0x4f, 0x70,
+	0x74, 0x61, 0x62, 0x6c, 0x65, 0x5c, 0x45, 0x78, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x5c, 0x56,
+	0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x15,
+	0x4f, 0x70, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x3a, 0x3a, 0x45, 0x78, 0x74, 0x65, 0x72, 0x6e, 0x61,
+	0x6c, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1130,46 +1254,49 @@ func file_optable_external_v1_cleanroom_proto_rawDescGZIP() []byte {
 	return file_optable_external_v1_cleanroom_proto_rawDescData
 }
 
-var file_optable_external_v1_cleanroom_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_optable_external_v1_cleanroom_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_optable_external_v1_cleanroom_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
+var file_optable_external_v1_cleanroom_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_optable_external_v1_cleanroom_proto_goTypes = []any{
 	(Cleanroom_State)(0),                          // 0: optable.external.v1.Cleanroom.State
 	(Cleanroom_Type)(0),                           // 1: optable.external.v1.Cleanroom.Type
 	(Cleanroom_Participant_State)(0),              // 2: optable.external.v1.Cleanroom.Participant.State
-	(*Cleanroom)(nil),                             // 3: optable.external.v1.Cleanroom
-	(*GetCleanroomRequest)(nil),                   // 4: optable.external.v1.GetCleanroomRequest
-	(*Cleanroom_Config)(nil),                      // 5: optable.external.v1.Cleanroom.Config
-	(*Cleanroom_Participant)(nil),                 // 6: optable.external.v1.Cleanroom.Participant
-	(*Cleanroom_Result)(nil),                      // 7: optable.external.v1.Cleanroom.Result
-	(*Cleanroom_Config_PairConfig)(nil),           // 8: optable.external.v1.Cleanroom.Config.PairConfig
-	(*Cleanroom_Config_PairConfig_AuthToken)(nil), // 9: optable.external.v1.Cleanroom.Config.PairConfig.AuthToken
-	(*Cleanroom_Result_PairResult)(nil),           // 10: optable.external.v1.Cleanroom.Result.PairResult
-	(*Cleanroom_Result_PairResult_MatchRate)(nil), // 11: optable.external.v1.Cleanroom.Result.PairResult.MatchRate
-	(*timestamppb.Timestamp)(nil),                 // 12: google.protobuf.Timestamp
+	(GetCleanroomRequest_View)(0),                 // 3: optable.external.v1.GetCleanroomRequest.View
+	(*Cleanroom)(nil),                             // 4: optable.external.v1.Cleanroom
+	(*GetCleanroomRequest)(nil),                   // 5: optable.external.v1.GetCleanroomRequest
+	(*RefreshTokenRequest)(nil),                   // 6: optable.external.v1.RefreshTokenRequest
+	(*Cleanroom_Config)(nil),                      // 7: optable.external.v1.Cleanroom.Config
+	(*Cleanroom_Participant)(nil),                 // 8: optable.external.v1.Cleanroom.Participant
+	(*Cleanroom_Result)(nil),                      // 9: optable.external.v1.Cleanroom.Result
+	(*Cleanroom_Config_PairConfig)(nil),           // 10: optable.external.v1.Cleanroom.Config.PairConfig
+	(*Cleanroom_Config_PairConfig_AuthToken)(nil), // 11: optable.external.v1.Cleanroom.Config.PairConfig.AuthToken
+	(*Cleanroom_Result_PairResult)(nil),           // 12: optable.external.v1.Cleanroom.Result.PairResult
+	(*Cleanroom_Result_PairResult_MatchRate)(nil), // 13: optable.external.v1.Cleanroom.Result.PairResult.MatchRate
+	(*timestamppb.Timestamp)(nil),                 // 14: google.protobuf.Timestamp
 }
 var file_optable_external_v1_cleanroom_proto_depIdxs = []int32{
-	12, // 0: optable.external.v1.Cleanroom.create_time:type_name -> google.protobuf.Timestamp
-	12, // 1: optable.external.v1.Cleanroom.update_time:type_name -> google.protobuf.Timestamp
-	12, // 2: optable.external.v1.Cleanroom.expire_time:type_name -> google.protobuf.Timestamp
+	14, // 0: optable.external.v1.Cleanroom.create_time:type_name -> google.protobuf.Timestamp
+	14, // 1: optable.external.v1.Cleanroom.update_time:type_name -> google.protobuf.Timestamp
+	14, // 2: optable.external.v1.Cleanroom.expire_time:type_name -> google.protobuf.Timestamp
 	0,  // 3: optable.external.v1.Cleanroom.state:type_name -> optable.external.v1.Cleanroom.State
 	1,  // 4: optable.external.v1.Cleanroom.type:type_name -> optable.external.v1.Cleanroom.Type
-	5,  // 5: optable.external.v1.Cleanroom.config:type_name -> optable.external.v1.Cleanroom.Config
-	6,  // 6: optable.external.v1.Cleanroom.participants:type_name -> optable.external.v1.Cleanroom.Participant
-	7,  // 7: optable.external.v1.Cleanroom.result:type_name -> optable.external.v1.Cleanroom.Result
-	8,  // 8: optable.external.v1.Cleanroom.Config.pair_config:type_name -> optable.external.v1.Cleanroom.Config.PairConfig
-	2,  // 9: optable.external.v1.Cleanroom.Participant.state:type_name -> optable.external.v1.Cleanroom.Participant.State
-	12, // 10: optable.external.v1.Cleanroom.Participant.update_time:type_name -> google.protobuf.Timestamp
-	12, // 11: optable.external.v1.Cleanroom.Participant.invitation_update_time:type_name -> google.protobuf.Timestamp
-	10, // 12: optable.external.v1.Cleanroom.Result.pair_result:type_name -> optable.external.v1.Cleanroom.Result.PairResult
-	9,  // 13: optable.external.v1.Cleanroom.Config.PairConfig.token:type_name -> optable.external.v1.Cleanroom.Config.PairConfig.AuthToken
-	12, // 14: optable.external.v1.Cleanroom.Config.PairConfig.AuthToken.expire_time:type_name -> google.protobuf.Timestamp
-	12, // 15: optable.external.v1.Cleanroom.Result.PairResult.create_time:type_name -> google.protobuf.Timestamp
-	11, // 16: optable.external.v1.Cleanroom.Result.PairResult.match_rate:type_name -> optable.external.v1.Cleanroom.Result.PairResult.MatchRate
-	17, // [17:17] is the sub-list for method output_type
-	17, // [17:17] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	7,  // 5: optable.external.v1.Cleanroom.config:type_name -> optable.external.v1.Cleanroom.Config
+	8,  // 6: optable.external.v1.Cleanroom.participants:type_name -> optable.external.v1.Cleanroom.Participant
+	9,  // 7: optable.external.v1.Cleanroom.result:type_name -> optable.external.v1.Cleanroom.Result
+	3,  // 8: optable.external.v1.GetCleanroomRequest.view:type_name -> optable.external.v1.GetCleanroomRequest.View
+	10, // 9: optable.external.v1.Cleanroom.Config.pair_config:type_name -> optable.external.v1.Cleanroom.Config.PairConfig
+	2,  // 10: optable.external.v1.Cleanroom.Participant.state:type_name -> optable.external.v1.Cleanroom.Participant.State
+	14, // 11: optable.external.v1.Cleanroom.Participant.update_time:type_name -> google.protobuf.Timestamp
+	14, // 12: optable.external.v1.Cleanroom.Participant.invitation_update_time:type_name -> google.protobuf.Timestamp
+	12, // 13: optable.external.v1.Cleanroom.Result.pair_result:type_name -> optable.external.v1.Cleanroom.Result.PairResult
+	11, // 14: optable.external.v1.Cleanroom.Config.PairConfig.token:type_name -> optable.external.v1.Cleanroom.Config.PairConfig.AuthToken
+	14, // 15: optable.external.v1.Cleanroom.Config.PairConfig.AuthToken.expire_time:type_name -> google.protobuf.Timestamp
+	14, // 16: optable.external.v1.Cleanroom.Result.PairResult.create_time:type_name -> google.protobuf.Timestamp
+	13, // 17: optable.external.v1.Cleanroom.Result.PairResult.match_rate:type_name -> optable.external.v1.Cleanroom.Result.PairResult.MatchRate
+	18, // [18:18] is the sub-list for method output_type
+	18, // [18:18] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	18, // [18:18] is the sub-list for extension extendee
+	0,  // [0:18] is the sub-list for field type_name
 }
 
 func init() { file_optable_external_v1_cleanroom_proto_init() }
@@ -1203,7 +1330,7 @@ func file_optable_external_v1_cleanroom_proto_init() {
 			}
 		}
 		file_optable_external_v1_cleanroom_proto_msgTypes[2].Exporter = func(v any, i int) any {
-			switch v := v.(*Cleanroom_Config); i {
+			switch v := v.(*RefreshTokenRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1215,7 +1342,7 @@ func file_optable_external_v1_cleanroom_proto_init() {
 			}
 		}
 		file_optable_external_v1_cleanroom_proto_msgTypes[3].Exporter = func(v any, i int) any {
-			switch v := v.(*Cleanroom_Participant); i {
+			switch v := v.(*Cleanroom_Config); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1227,7 +1354,7 @@ func file_optable_external_v1_cleanroom_proto_init() {
 			}
 		}
 		file_optable_external_v1_cleanroom_proto_msgTypes[4].Exporter = func(v any, i int) any {
-			switch v := v.(*Cleanroom_Result); i {
+			switch v := v.(*Cleanroom_Participant); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1239,7 +1366,7 @@ func file_optable_external_v1_cleanroom_proto_init() {
 			}
 		}
 		file_optable_external_v1_cleanroom_proto_msgTypes[5].Exporter = func(v any, i int) any {
-			switch v := v.(*Cleanroom_Config_PairConfig); i {
+			switch v := v.(*Cleanroom_Result); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1251,7 +1378,7 @@ func file_optable_external_v1_cleanroom_proto_init() {
 			}
 		}
 		file_optable_external_v1_cleanroom_proto_msgTypes[6].Exporter = func(v any, i int) any {
-			switch v := v.(*Cleanroom_Config_PairConfig_AuthToken); i {
+			switch v := v.(*Cleanroom_Config_PairConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1263,7 +1390,7 @@ func file_optable_external_v1_cleanroom_proto_init() {
 			}
 		}
 		file_optable_external_v1_cleanroom_proto_msgTypes[7].Exporter = func(v any, i int) any {
-			switch v := v.(*Cleanroom_Result_PairResult); i {
+			switch v := v.(*Cleanroom_Config_PairConfig_AuthToken); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1275,6 +1402,18 @@ func file_optable_external_v1_cleanroom_proto_init() {
 			}
 		}
 		file_optable_external_v1_cleanroom_proto_msgTypes[8].Exporter = func(v any, i int) any {
+			switch v := v.(*Cleanroom_Result_PairResult); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_optable_external_v1_cleanroom_proto_msgTypes[9].Exporter = func(v any, i int) any {
 			switch v := v.(*Cleanroom_Result_PairResult_MatchRate); i {
 			case 0:
 				return &v.state
@@ -1287,10 +1426,10 @@ func file_optable_external_v1_cleanroom_proto_init() {
 			}
 		}
 	}
-	file_optable_external_v1_cleanroom_proto_msgTypes[2].OneofWrappers = []any{
+	file_optable_external_v1_cleanroom_proto_msgTypes[3].OneofWrappers = []any{
 		(*Cleanroom_Config_PairConfig_)(nil),
 	}
-	file_optable_external_v1_cleanroom_proto_msgTypes[4].OneofWrappers = []any{
+	file_optable_external_v1_cleanroom_proto_msgTypes[5].OneofWrappers = []any{
 		(*Cleanroom_Result_PairResult_)(nil),
 	}
 	type x struct{}
@@ -1298,8 +1437,8 @@ func file_optable_external_v1_cleanroom_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_optable_external_v1_cleanroom_proto_rawDesc,
-			NumEnums:      3,
-			NumMessages:   9,
+			NumEnums:      4,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
