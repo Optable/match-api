@@ -199,8 +199,8 @@ message GetCleanroomRequest {
 
   //buf:lint:ignore ENUM_VALUE_PREFIX
   enum View {
-    // Unspecified state.
-    STATE_UNSPECIFIED = 0;
+    // Unspecified view.
+    VIEW_UNSPECIFIED = 0;
     // A view with everything except the sensitive info, the token
     FULL = 1;
     // A view with basic metadata of the cleanroom and the sensitive info, the token
