@@ -1,6 +1,6 @@
 syntax = "proto3";
-package optable.cleanroom.v1;
-option go_package = "github.com/optable/match-api/gen/optable/cleanroom/v1";
+package optable.external.v1;
+option go_package = "github.com/optable/match-api/gen/optable/external/v1";
 
 import "google/protobuf/timestamp.proto";
 import "google/api/field_behavior.proto";
