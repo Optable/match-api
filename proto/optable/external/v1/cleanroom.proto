@@ -73,19 +73,19 @@ message Cleanroom {
   message Config {
     oneof config {
       // Configuration for a PAIR cleanroom.
-      PairConfig pair_config = 1;
+      PairConfig pair = 1;
     }
 
     // Configuration for a PAIR cleanroom.
     message PairConfig {
       reserved 1;
       message AuthToken {
-        string token = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
+        string value = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
         google.protobuf.Timestamp expire_time = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
       }
 
       // The auth-token for the advertiser to use to interact with the cleanroom's provided bucket
-      AuthToken token = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+      AuthToken gcs_token = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
 
       // The URL of the advertiser encrypted and hashed data.
       string advertiser_twice_encrypted_data_url = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
