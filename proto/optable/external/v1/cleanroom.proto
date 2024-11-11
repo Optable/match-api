@@ -141,6 +141,16 @@ message Cleanroom {
     // Invitation update time for the participant.
     google.protobuf.Timestamp invitation_update_time = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
 
+    message Error {
+      // Error code.
+      string code = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+      // Error message.
+      string message = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+    }
+
+    Error error = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
+
     //buf:lint:ignore ENUM_VALUE_PREFIX
     enum Role {
       // Unspecified role.
