@@ -193,6 +193,17 @@ message GetCleanroomRequest {
   View view = 2 [(google.api.field_behavior) = REQUIRED];
 }
 
+// The request message to advance the state of an advertiser in a pair cleanroom.
+message AdvanceCleanroomAdvertiserStateRequest {
+  // Required. The resource name of the cleanroom to advance its state.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "cleanroom.optbl.com/Cleanroom"
+    }
+  ];
+}
+
 // The request message to refresh the token of a cleanroom.
 message RefreshTokenRequest {
   // Required. The resource name of the cleanroom to refresh its token.
